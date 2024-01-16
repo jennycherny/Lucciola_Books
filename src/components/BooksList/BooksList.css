@@ -1,0 +1,85 @@
+main {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center first baseline;
+    /* overflow: hidden; */
+  }
+  
+  main .item {
+    width: 23.4%;
+    margin: 10px;
+    background: #FFFFFF;
+  
+    padding: 10px;
+  
+    transition: transform 500ms ease;
+  
+    border-radius: 7px;
+  }
+
+  main .item__skeleton {
+    width: 23.4%;
+    margin: 10px;
+  }
+  
+  main .item:hover {
+    transform: scale(1.03);
+  }
+  
+  main .item img {
+    width: 100%;
+    border-radius: 7px;
+  }
+  
+  main .cardText {
+    margin: 5px;
+    margin-bottom: 0px !important;
+  }
+  main h5 {
+    font-size: 14px;
+    color: #777777;
+    margin-bottom: 0px !important;
+  }
+  
+  main h4 {
+    font-size: 15px;
+    color: black;
+    margin-bottom: 0px !important;
+  }
+  
+  main h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2B2B2B;
+    margin-bottom: 0px !important;
+  }
+  
+  .cards-link {
+    text-decoration: none;
+  }
+
+  .loadmore {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+  }
+
+  .loadmore button {
+    justify-content: flex-end;
+
+    background: #FFFFFF;
+    padding: 7px 10px;
+    border: 1px solid #625f6039;
+    border-radius: 5px;
+    color: black;
+    font-weight: normal;
+    font-size: 15px;
+
+    transition: all 400ms ease;
+  }
+
+  .loadmore button:hover {
+      background: #FDF9B2;
+      transform: scale(1.03);
+  }

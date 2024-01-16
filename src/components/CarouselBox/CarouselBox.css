@@ -1,0 +1,28 @@
+#carousel-btn:hover { 
+    color: #625F60;
+  }
+  
+  #carousel-content-first-slide {
+    padding-bottom: 500px;
+    padding-left: 100px;
+    width: 50%;
+    text-align: left;
+  }
+  
+  #carousel-content-second-slide {
+    padding-bottom: 660px;
+    padding-left: 200px;
+    width: 60%;
+    text-align: center;
+  }
+  
+  #carousel-content-third-slide {
+    padding-bottom: 650px;
+    padding-left: 200px;
+    width: 60%;
+    text-align: center;
+  }
+  
+  #carousel-text {
+    padding-bottom: 10px;
+  }

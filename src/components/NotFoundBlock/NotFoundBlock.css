@@ -1,0 +1,17 @@
+.notFoundBlock {
+    width: 65%;
+    margin: 150px auto;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.notFoundBlock div {
+    margin: auto;
+    padding-left: 40px;
+    color: #3F3D56;
+}
+
+.notFoundBlock p {
+    font-size: 18px;
+}

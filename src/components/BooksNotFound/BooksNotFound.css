@@ -1,0 +1,13 @@
+.error {
+    display: flex;
+    margin: 150px auto;
+}
+
+.error div {
+    margin: auto 20px;
+    color: #3F3D56;;
+}
+
+.error h1 {
+    font-size: 40px;
+}

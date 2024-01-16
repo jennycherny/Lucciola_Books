@@ -1,0 +1,156 @@
+
+.filter {
+    position: relative;
+    font-size: 14px;
+    margin: auto 10px;
+    color: #625F60;
+}
+
+.filter__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.filter__label:hover{
+    transform: scale(1.03);
+}
+
+.filter__label svg {
+    margin-right: 8px;
+}  
+
+.filter__popup {
+      position: absolute;
+      right: 0;
+      margin-top: 15px;
+
+      background: #ffffff;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+      border-radius: 10px;
+      /* overflow: hidden; */
+      padding: 20px;
+
+      display: inline-flex;
+} 
+
+.filter__popup b {
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
+.filter__popup ul {
+    overflow: hidden;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.filter__popup ul li {
+    list-style-type: none;
+    display: block;
+
+    padding: 3px 15px 3px 3px;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 400ms ease;
+
+    white-space: nowrap;
+    
+    &:hover {
+    /* background: rgba(253, 234, 68, 0.14); */
+    transform: scale(1.03);
+    }
+}
+
+.popup__frst__column {
+    margin-right: 15px;
+}
+
+.popup__scnd__column {
+    display: block;
+    position: relative;
+}
+
+.filter__popup .input {
+    margin: auto 5px;
+    padding: 5px;
+    width: 50px;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    color: #625F60;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.filter__popup .input:focus {
+    outline: 2px solid #FDF9B2;
+}
+
+.filter__popup .input::placeholder {
+    color: rgba(196, 193, 193, 0.227)F60;
+    font-weight: normal;
+}
+
+.range {
+    margin-bottom: 10px;
+}
+
+.range__input {
+    display: flex ;
+    justify-content: start;
+}
+
+.range__name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.fromTo {
+    margin: auto 0px;
+}
+
+.inStock {
+    display: flex ;
+    justify-content: start;
+
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.inStock:hover {
+    transform: scale(1.03);
+}
+
+.inStock .checkbox {
+    margin: auto 0px;
+}
+
+.inStock__name {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.popup__buttons {
+    display: flex;
+}
+
+.popup__buttons button {
+    justify-content: flex-end;
+
+    /* margin-top: 10px; */
+    bottom: 0px;
+    padding: 5px 7px;
+    border: none;
+    border-radius: 5px;
+    color: #625F60;
+    font-size: 13px;
+
+    transition: all 400ms ease;
+    position: absolute;
+}
+
+.popup__buttons button:hover {
+    background: #FDF9B2;
+    transform: scale(1.03);
+}
