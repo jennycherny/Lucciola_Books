@@ -67,42 +67,42 @@ const Shop = ({ condition }) => {
                 items={items}
                 visibleItems={visibleItems}
                 isLoading={isLoading}
-        />
-       <div className='search_place'>
-        <Filters 
-            selectedGenres={selectedGenres}
-            onClickGenre={handleGenreChange}
-            isOpen={isFilterOpen}
-            toggleFilter={toggleFilter}
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            minAge={minAge}
-            maxAge={maxAge}
-            onMinPriceChange={handleMinPriceChange}
-            onMaxPriceChange={handleMaxPriceChange}
-            onMinAgeChange={handleMinAgeChange}
-            onMaxAgeChange={handleMaxAgeChange} 
-            onResetFilters={handleResetFilters}
-        />
-        <Sort 
-            onChangeSort={handleSortChange}
-            isOpen={isSortOpen}
-            toggleSort={toggleSort}
-        />
-        <Search onSearchChange={handleSearchChange} />
-        </div>
-        {isLoading ? (
-            <BooksList items={[]} isLoading={isLoading} />
-            ) : (
-            <>
-                <BooksList items={items.slice(0, visibleItems)} isLoading={isLoading} />
-                {visibleItems < items.length && (
-                    <div className="loadmore">
-                        <button onClick={() => loadMoreBooks()}>Загрузить еще</button>
-                    </div>
+            />
+            <div className='search_place'>
+                <Filters 
+                    selectedGenres={selectedGenres}
+                    onClickGenre={handleGenreChange}
+                    isOpen={isFilterOpen}
+                    toggleFilter={toggleFilter}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    minAge={minAge}
+                    maxAge={maxAge}
+                    onMinPriceChange={handleMinPriceChange}
+                    onMaxPriceChange={handleMaxPriceChange}
+                    onMinAgeChange={handleMinAgeChange}
+                    onMaxAgeChange={handleMaxAgeChange} 
+                    onResetFilters={handleResetFilters}
+                />
+                <Sort 
+                    onChangeSort={handleSortChange}
+                    isOpen={isSortOpen}
+                    toggleSort={toggleSort}
+                />
+                <Search onSearchChange={handleSearchChange} />
+                </div>
+            {isLoading ? (
+                <BooksList items={[]} isLoading={isLoading} />
+                ) : (
+                <>
+                    <BooksList items={items.slice(0, visibleItems)} isLoading={isLoading} />
+                    {visibleItems < items.length && (
+                        <div className="loadmore">
+                            <button onClick={() => loadMoreBooks()}>Загрузить еще</button>
+                        </div>
+                    )}
+                </>
                 )}
-            </>
-            )}
         </div>
                 
     );

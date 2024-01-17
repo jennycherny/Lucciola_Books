@@ -44,34 +44,3 @@ const Hook = () => {
 };
 
 export default Hook;
-
-// const Hook = () => {
-//     const [data, setData] = useState([]);
-//     const [isLoading, setIsLoading] = useState(true);
-//     const [error, setError] = useState(null);
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             try {
-//                 const response = await fetch('https://sheetsu.com/apis/v1.0su/d3c4c0b353f6');
-//                 const fetchedData = await response.json();
-
-//                 setData(fetchedData);
-//             } catch (error) {
-//                 setError(error);
-//             } finally {
-//                 setIsLoading(false);
-//             }
-//         };
-
-//         fetchData();
-//     }, []);
-
-//     return {
-//         data,
-//         isLoading,
-//         error,
-//     };
-// };
-
-// export default Hook;

@@ -1,0 +1,88 @@
+.carousel-block {
+    width: 80%;
+    margin: 0px auto;
+    display: flex;
+
+    @media(max-width: 750px) {
+        width: 100%;
+    }
+}
+
+.carousel-block button{
+    border: none;
+
+    transition: transform 500ms ease;
+}
+
+.carousel-block .arrow {
+    transition: transform 500ms ease;
+    cursor: pointer;
+}
+
+.carousel-block .arrow:hover {
+    transform: scale(1.03);
+}
+
+.carousel {
+    overflow: hidden;
+}
+
+.carousel .item {
+    min-width: 24.5%;
+    box-sizing: border-box;
+    margin: 7px;
+    /* padding: 7px; */
+    border-radius: 7px;
+
+    transition: transform 500ms ease;
+
+    @media(max-width: 750px) {
+        margin: 2px;
+        min-width: 48%;
+    }
+}
+
+.carousel .item:hover {
+    transform: scale(1.03);
+}
+
+.carousel .itemText {
+    margin: 5px;
+}
+
+.carousel img {
+    width: 100%;
+    border-radius: 7px;
+}
+
+.carousel h3 {
+    font-size: 14px;
+    font-weight: bold;
+
+    @media(max-width: 750px) {
+        font-size: 12px;
+    }
+}
+
+.carousel h4 {
+    font-size: 13px;
+
+    @media(max-width: 750px) {
+        font-size: 10px;
+    }
+}
+
+.carousel h5 {
+    font-size: 14px;
+    color: #625F60;
+
+    @media(max-width: 750px) {
+        font-size: 11px;
+    }
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+

@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sort.css'
 
 const Sort = ({ onChangeSort }) => {
-    const sortTypes = [ 'новизне', 'цене', 'алфавиту'];
+    const sortTypes = [ 'по новизне', 'по цене', 'по алфавиту'];
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState(0);
@@ -19,24 +19,27 @@ const Sort = ({ onChangeSort }) => {
 
     const toggleSortDirection = () => {
         const newSortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-
         setSortDirection(newSortDirection);
-        console.log(newSortDirection)
-        onChangeSort(selectedSort, newSortDirection); // Вызываем onChangeSort с текущим типом сортировки
+        onChangeSort(selectedSort, newSortDirection);
       };
+
+    // useEffect(() => {
+    //     onChangeSort(selectedSort, sortDirection);
+    // }, [selected, sortDirection, onChangeSort, selectedSort]);
 
     return (
         <div className='sort'>
             <div className='sort__label'>
-                <div onClick={() => toggleSortDirection()} className='directionToggler'>
-                    <svg className={`directionIcon ${sortDirection === 'asc' ? 'notRotated' : 'rotated'}`} xmlns="http://www.w3.org/2000/svg" width="17"  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <div onClick={toggleSortDirection} className='directionToggler'>
+                    <svg className={sortDirection === 'desc' ? 'rotated' : 'notRotated'} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path fill="#625F60" stroke-linecap="round" stroke-linejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12" />
                     </svg>
-
-                    Сортировка по:
+                    <span className='sorting__on'>
+                       Сортировка: 
+                    </span>
                 </div>
                 
-                <span onClick={() => setOpen(!open)}>{selectedSort}</span>
+                <span className='selected__sort'onClick={() => setOpen(!open)}>{selectedSort}</span>
             </div>
             {open && (
                 <div className='sort__popup'>

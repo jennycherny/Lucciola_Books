@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Hook from '../Hooks/Hook';
 import './Filters.css'
 
@@ -88,7 +88,6 @@ const Filters = ({
                 <svg 
                     className={open ? 'rotated' : 'notRoated'}
                     xmlns="http://www.w3.org/2000/svg" 
-                    width="16"  
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke-width="1.5" 
@@ -96,7 +95,7 @@ const Filters = ({
                     class="w-6 h-6">
                     <path fill="#625F60" stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                 </svg>
-                Фильтры
+                <span  className="filter__text" >Фильтры</span>
             </div>
             {open && (
                 <div className='filter__popup'>
@@ -167,15 +166,6 @@ const Filters = ({
                                 />
                             </div>
                         </div>
-                        {/* <div 
-                            className='inStock range'
-                        >
-                            <input 
-                                type="checkbox"     
-                            /> 
-                            <div className='inStock__name'>В наличии</div>
-                        </div> */}
-
                         <div className='popup__buttons'>
                             <button 
                                 onClick={handleResetFilters}

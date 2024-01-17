@@ -11,7 +11,7 @@ const useBookFilters = (data, condition) => {
 
 
     const [isSortOpen, setIsSortOpen] = useState(false); //состояние выпадающего списка сортировки
-    const [sortType, setSortType] = useState('новизне'); // сортировка
+    const [sortType, setSortType] = useState('по новизне'); // сортировка
     const [sortDirection, setSortDirection] = useState('desc'); //направления сортировки
 
     const [minAge, setMinAge] = useState(''); // Состояние для минимального возраста
@@ -27,11 +27,11 @@ const useBookFilters = (data, condition) => {
         setItems(data);
       }, [data, condition]);
 
-  useEffect(() => {
-    if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
-        filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
-    }
-}, [selectedGenres, sortType, sortDirection, minPrice, maxPrice, minAge, maxAge, searchPlace, data]);
+      useEffect(() => {
+        if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
+            filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
+        }
+    }, [selectedGenres, sortType, sortDirection, minPrice, maxPrice, minAge, maxAge, searchPlace, data, condition]);
 
 
 const handleGenreChange = useCallback((selectedGenre) => {
@@ -149,11 +149,11 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
     // Сортировка
     filteredItems.sort((a, b) => {
       switch (sortType) {
-        case 'цене':
+        case 'по цене':
           return sortDirection === 'asc' ? a.price - b.price : b.price - a.price;
-        case 'новизне':
+        case 'по новизне':
           return sortDirection === 'asc' ? a.id - b.id : b.id - a.id;
-        case 'алфавиту':
+        case 'по алфавиту':
           return sortDirection === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title);
         default:
           return 0;
@@ -165,7 +165,7 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
       }
   
     setItems(filteredItems);
-  }, [originalItems, setItems, sortType, sortDirection]);
+  }, [originalItems, setItems, sortType, sortDirection, condition]);
 
   const handleResetFilters = () => { // Сбросить состояние фильтров
     setSelectedGenres([]);

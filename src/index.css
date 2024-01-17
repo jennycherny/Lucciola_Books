@@ -7,15 +7,29 @@
 
 body {
   background-color: #f0f0f0 !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Montserrat', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+button, input {
+  font-family: 'Montserrat', sans-serif;
+}
+
 input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
+
   appearance: none;
   border: 1px solid #625F60;
   border-radius: 3px;
@@ -32,16 +46,25 @@ input[type="checkbox"]:checked {
 }
 
 .wrapper {
-  width: 1280px;
+  width: 100%;
+  max-width: 1200px;
   margin: 20px auto;
+  padding: 0px 100px;
+
+  @media(max-width: 750px) {
+    padding: 0px 10px;
+  }
 }
 
 .search_place {
   display: flex;
-  width: 96%;
   flex-flow: row wrap;
   justify-content: flex-end;
-  margin: 20px;
+  margin: 20px 8px;
+
+  @media(max-width: 750px) {
+    justify-content: center;
+  }
 }
 
 

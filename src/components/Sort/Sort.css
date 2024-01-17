@@ -12,9 +12,10 @@
 
 .sort__label svg {
     margin-right: 6px;
+    width: 17px; 
 }
  
-.sort__label span {
+.sort__label .selected__sort{
     margin-left: 8px;
     color: #212529;
     border-bottom: 1px dashed #212529;
@@ -26,9 +27,22 @@
         }
 }
 
+@media (max-width: 750px) {
+    .sorting__on {
+      display: none;
+    }
+
+    .sort__label svg {
+        width: 23px; 
+        margin: 0px;
+    }
+}
+
   
 .sort__popup {
       position: absolute;
+      z-index: 1;
+      
       right: 0;
       margin-top: 15px;
       background: #ffffff;
@@ -53,7 +67,8 @@
     border-radius: 7px;
     transition: all 400ms ease;
     
-
+    white-space: nowrap;
+    
     &.active,
     &:hover {
     background: rgba(253, 234, 68, 0.14);
@@ -72,7 +87,7 @@
     transition: transform 0.4s ease-in-out;
   }
 
-.notRoated {
+.notRotated {
     transform: rotate(360deg);
     transition: transform 0.4s ease-in-out;
 }

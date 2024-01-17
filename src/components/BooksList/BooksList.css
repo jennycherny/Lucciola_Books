@@ -1,85 +1,143 @@
 main {
-    display: flex;
-    width: 100%;
-    flex-flow: row wrap;
-    justify-content: center first baseline;
-    /* overflow: hidden; */
-  }
-  
-  main .item {
-    width: 23.4%;
-    margin: 10px;
-    background: #FFFFFF;
-  
-    padding: 10px;
-  
-    transition: transform 500ms ease;
-  
-    border-radius: 7px;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: center first baseline;
+  /* overflow: hidden; */
+}
+
+main .item {
+  width: 22.3%;
+  margin: 6px;
+  padding: 8px;
+  border-radius: 5px;
+  /* background: #ffff; */
+
+  transition: transform 500ms ease;
+
+  @media(max-width: 1400px) {
+    width: 30%;
   }
 
-  main .item__skeleton {
-    width: 23.4%;
-    margin: 10px;
-  }
-  
-  main .item:hover {
-    transform: scale(1.03);
-  }
-  
-  main .item img {
-    width: 100%;
-    border-radius: 7px;
-  }
-  
-  main .cardText {
+  @media(max-width: 750px) {
+    width: 46.5%;
+    padding: 7px;
     margin: 5px;
-    margin-bottom: 0px !important;
   }
-  main h5 {
+
+  @media(max-width: 330px) {
+    width: 95%;
+  }
+}
+
+main .item__skeleton {
+  width: 21.5%;
+  margin: 10px;
+}
+
+main .item:hover {
+  transform: scale(1.03);
+}
+
+main .item img {
+  width: 100%;
+  border-radius: 7px;
+}
+
+main .cardText {
+  margin: 5px;
+  margin-bottom: 0px;
+}
+
+main h5 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #777777;
+  margin-bottom: 0px;
+
+  @media(max-width: 750px) {
+    font-size: 13px;
+  }
+}
+
+main h4 {
+  font-weight: normal;
+  font-size: 15px;
+  color: black;
+  margin-bottom: 0px;
+
+  @media(max-width: 750px) {
     font-size: 14px;
-    color: #777777;
-    margin-bottom: 0px !important;
   }
-  
-  main h4 {
-    font-size: 15px;
-    color: black;
-    margin-bottom: 0px !important;
-  }
-  
-  main h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #2B2B2B;
-    margin-bottom: 0px !important;
-  }
-  
-  .cards-link {
-    text-decoration: none;
-  }
+}
 
-  .loadmore {
-    display: flex;
-    justify-content: center;
-    margin: 30px auto;
+main h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2B2B2B;
+  margin-bottom: 0px;
+
+  @media(max-width: 750px) {
+    font-size: 14px;
   }
+}
 
-  .loadmore button {
-    justify-content: flex-end;
+.add-to-cart {
+  margin: 8px 5px 5px 0px;
 
-    background: #FFFFFF;
-    padding: 7px 10px;
-    border: 1px solid #625f6039;
-    border-radius: 5px;
-    color: black;
-    font-weight: normal;
-    font-size: 15px;
+  padding: 5px 7px;
 
-    transition: all 400ms ease;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #777777;
+  border: 1px solid #777777;
+
+  font-size: 15px;
+
+  transition: all 400ms ease;
+
+  @media(max-width: 750px) {
+    padding: 3px 5px;
+    font-size: 12px;
   }
+}
 
-  .loadmore button:hover {
-      background: #FDF9B2;
-      transform: scale(1.03);
-  }
+.add-to-cart:hover {
+  background: #FDF9B2;
+  transform: 0;
+  border: 1px solid #FDF9B2;
+}
+
+.add-to-cart svg {
+  margin-right: 5px;
+}
+
+.cards-link {
+  text-decoration: none;
+}
+
+.loadmore {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.loadmore button {
+  justify-content: flex-end;
+
+  background: #FFFFFF;
+  padding: 7px 10px;
+  border: 1px solid #625f6039;
+  border-radius: 5px;
+  color: black;
+  font-weight: normal;
+  font-size: 15px;
+
+  transition: all 400ms ease;
+}
+
+.loadmore button:hover {
+    background: #FDF9B2;
+    transform: scale(1.03);
+}
