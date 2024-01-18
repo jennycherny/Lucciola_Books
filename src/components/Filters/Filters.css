@@ -25,14 +25,13 @@
     @media(max-width: 750px) {
         width: 23px;
         margin: 0px;
+
+        border: 1px solid;
+        padding: 2px;
+        border-radius: 5px;
+        background: #ffff;
       }
 }  
-
-@media (max-width: 750px) {
-    .filter__text {
-      display: none;
-    }
-}
 
 .filter__popup {
       position: absolute;    
@@ -45,13 +44,16 @@
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
       border-radius: 10px;
       padding: 20px;
+      text-align: left;
 
       display: inline-flex;
 
-      @media(max-width: 750px) {
-        left: 0;
-        right: auto;
+      @media(max-width: 1400px) {
         display: block;
+      }
+
+      @media(max-width: 750px) {
+        text-align: left;
       }
 } 
 
@@ -77,19 +79,28 @@
 
     white-space: nowrap;
     
-    &:hover {
-    /* background: rgba(253, 234, 68, 0.14); */
+    &:hover { 
     transform: scale(1.03);
+    }
+
+    @media (max-width: 750px) { 
+        /* font-size: 16px; */
+        white-space: wrap;
+        text-align: left;
     }
 }
 
 .popup__frst__column {
     margin-right: 15px;
+    @media (max-width: 750px) {
+        margin: 20px 10px;
+    }
 }
 
 .popup__scnd__column {
-    display: block;
-    position: relative;
+    @media (max-width: 750px) {
+        margin-left: 20px;
+    }
 }
 
 .filter__popup .input {
@@ -98,9 +109,14 @@
     width: 50px;
     border: 1px solid #D9D9D9;
     border-radius: 5px;
-    color: #625F60;
+    /* color: #625F60; */
+    color: #2F2E41;
     font-weight: bold;
     font-size: 13px;
+
+    @media (max-width: 750px) {
+        font-size: 16px;
+    }
 }
 
 .filter__popup .input:focus {
@@ -152,14 +168,18 @@
 }
 
 .popup__buttons {
-    display: flex;
+    display: block;
+    @media (max-width: 750px) {
+        display: flex;
+      }
 }
 
 .popup__buttons button {
-    justify-content: flex-end;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 3px;
 
-    right: 0px;
-    bottom: 0px;
     padding: 5px 7px;
     border: none;
     border-radius: 5px;
@@ -167,11 +187,52 @@
     font-size: 13px;
 
     transition: all 400ms ease;
-    position: absolute;
-}
 
+    @media (max-width: 750px) {
+        background: #e7e7e7;
+        margin: 5px;
+        font-size: 18px;
+        text-align: center;
+      }
+}
 
 .popup__buttons button:hover {
     background: #FDF9B2;
     transform: scale(1.03);
 }
+
+.popup__buttons button svg {
+    padding-right: 2px;
+
+    @media (max-width: 750px) {
+        width: 25px;
+      }
+}
+
+.popup__buttons button .reset {
+    @media (max-width: 750px) {
+          /* display: none; */
+        }
+}
+
+@media (max-width: 750px) {
+    .filter__popup {
+        position: fixed;
+        bottom: 0;
+        height: calc(1/1.7 * 100vh); /* 2/3 экрана в высоту */
+        width: 91%;
+        overflow-y: scroll;
+        
+        /* display: flex; */
+        margin: 0px;
+        border-radius: 20px 20px 0px 0px;
+        font-size: 18px;
+    }
+
+    
+
+    .filter__text {
+        display: none;
+      }
+  }
+  

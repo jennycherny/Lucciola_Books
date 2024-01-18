@@ -1,0 +1,70 @@
+.tabs-conteiner {
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+
+    @media(max-width: 750px) {
+        font-size: 14px;
+        margin: 30px auto;
+    }
+}
+
+.tabs-buttons {
+    margin: 10px auto;
+
+    @media(max-width: 750px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.tabs-buttons button {
+    cursor: pointer;
+    margin: 4px 10px;
+    padding: 7px 30px;
+
+    border: 1px solid #2F2E41;
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    transition: all 400ms ease;
+
+}
+
+.tabs-buttons button:hover {
+    transform: scale(1.04);
+    background: #2F2E41;
+    color: #ffff;
+}
+
+.chosen {
+    background: #2F2E41;
+    color: #ffff;
+}
+
+.tabs-content {
+    width: 60%;
+
+    padding: 25px 50px;
+
+    border: 1px solid #2F2E41;
+    border-radius: 20px;
+
+    @media(max-width: 750px) {
+        width: 75%;
+        padding: 15px 30px;
+    }
+}
+
+.tabs-content h3 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 0px;
+}
+
+.tabs-content p {
+    padding-bottom: 7px;
+}

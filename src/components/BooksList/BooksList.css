@@ -2,37 +2,39 @@ main {
   display: flex;
   width: 100%;
   flex-flow: row wrap;
-  justify-content: center first baseline;
-  /* overflow: hidden; */
+  justify-content: center;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  @media(max-width: 1400px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  } 
+  @media(max-width: 750px) {
+    /* margin: 0px 20px; */
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+  }
 }
 
 main .item {
-  width: 22.3%;
-  margin: 6px;
-  padding: 8px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
   border-radius: 5px;
-  /* background: #ffff; */
-
   transition: transform 500ms ease;
-
-  @media(max-width: 1400px) {
-    width: 30%;
-  }
-
-  @media(max-width: 750px) {
-    width: 46.5%;
-    padding: 7px;
-    margin: 5px;
-  }
-
-  @media(max-width: 330px) {
-    width: 95%;
-  }
-}
-
-main .item__skeleton {
-  width: 21.5%;
-  margin: 10px;
 }
 
 main .item:hover {
@@ -40,6 +42,7 @@ main .item:hover {
 }
 
 main .item img {
+  max-width: 350px;
   width: 100%;
   border-radius: 7px;
 }
@@ -63,7 +66,7 @@ main h5 {
 main h4 {
   font-weight: normal;
   font-size: 15px;
-  color: black;
+  color: #2F2E41;
   margin-bottom: 0px;
 
   @media(max-width: 750px) {
@@ -74,7 +77,7 @@ main h4 {
 main h3 {
   font-size: 15px;
   font-weight: 700;
-  color: #2B2B2B;
+  color: #2F2E41;
   margin-bottom: 0px;
 
   @media(max-width: 750px) {
@@ -90,8 +93,8 @@ main h3 {
   border: none;
   border-radius: 5px;
   background: transparent;
-  color: #777777;
-  border: 1px solid #777777;
+  color: #2F2E41;
+  border: 1px solid #2F2E41;
 
   font-size: 15px;
 
@@ -104,9 +107,10 @@ main h3 {
 }
 
 .add-to-cart:hover {
-  background: #FDF9B2;
+  background: #2F2E41;
   transform: 0;
-  border: 1px solid #FDF9B2;
+  border: 1px solid #2F2E41;
+  color: #ffff;
 }
 
 .add-to-cart svg {
@@ -130,7 +134,7 @@ main h3 {
   padding: 7px 10px;
   border: 1px solid #625f6039;
   border-radius: 5px;
-  color: black;
+  color: #2F2E41;
   font-weight: normal;
   font-size: 15px;
 

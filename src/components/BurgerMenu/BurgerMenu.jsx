@@ -13,6 +13,7 @@ const BurgerMenu = ({ isOpen, handleToggle }) => {
           <li><a href="/about" className="nav-item">О нас</a></li>
           <li><a href="/shop" className="nav-item">Магазин</a></li>
           <li><a href="/library" className="nav-item">Библиотека</a></li>
+          <li><a href="/order" className="nav-item" id='nav-item'>Предзаказ</a></li>
         </ul>
       </div>
     );

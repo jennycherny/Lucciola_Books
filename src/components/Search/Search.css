@@ -14,13 +14,18 @@
     font-size: 15px;
 
     @media(max-width: 750px) {
-        width: 120px;
+        width: 100px;
         margin: 0px;
+        border: 1px solid #625F60;
       }
 }
 
 .search input:focus {
     outline: 1px solid #FDF9B2;
+
+    @media(max-width: 750px) {
+        outline: none;
+      }
 }
 
 .search input::placeholder {
@@ -35,7 +40,8 @@
     color: #625F60;
     
     @media(max-width: 750px) {
-        right: 100px; 
+        right: 115px; 
+        color: #1e1e1e;
       }
 }
 

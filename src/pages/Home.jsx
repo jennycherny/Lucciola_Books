@@ -1,14 +1,16 @@
 import React from 'react';
-import './Home.css'
+import PromoCarousel from '../components/PromoCarousel/PromoCarousel';
+import Footer from '../components/Footer/Footer';
+import './css/Home.css'
 import shopFrame from './../assets/frame_1.svg'
 import libraryFrame from './../assets/frame_2.svg'
 import orderFrame from './../assets/frame_3.svg'
-import PromoCarousel from '../components/PromoCarousel/PromoCarousel';
+
 
 const Home = () => {
         return (
+        <div>
             <div className='home__container'>
-
                 <div className='shop__block'>
                     <div className='shop__block__text'>
                         <h1>
@@ -23,12 +25,10 @@ const Home = () => {
                     </div>
                     <img src={shopFrame} alt=''/>
                 </div>
-
                 <div className='promo-carousel'>
                     <h2 id='shop-promo'>Новинки месяца</h2>
                     <PromoCarousel condition="Новая"/>
                 </div>  
-
                 <div className='library__block'>
                     <img src={libraryFrame} alt=''/>
                     <div className='library__block__text'>
@@ -58,7 +58,7 @@ const Home = () => {
                                 </a> 
                             </p>
                             <p>
-                                <a href="/delivery" className='home-button'>
+                                <a href="/about" className='home-button'>
                                     Узнать о доставке
                                 </a> 
                             </p>
@@ -67,6 +67,8 @@ const Home = () => {
                     <img src={orderFrame} alt=''/>
                 </div>
             </div>
+        {/* <Footer/> */}
+        </div>
         );
 }
 

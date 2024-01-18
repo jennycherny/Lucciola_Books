@@ -11,6 +11,10 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 750px) {
+      overflow-x: hidden; 
+}
 }
 
 a {
@@ -51,8 +55,11 @@ input[type="checkbox"]:checked {
   margin: 20px auto;
   padding: 0px 100px;
 
+  @media(max-width: 1400px) {
+    padding: 0px 20px;
+  }
   @media(max-width: 750px) {
-    padding: 0px 10px;
+    padding: 0px 5px;
   }
 }
 
@@ -60,6 +67,7 @@ input[type="checkbox"]:checked {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
+  text-align: center;
   margin: 20px 8px;
 
   @media(max-width: 750px) {

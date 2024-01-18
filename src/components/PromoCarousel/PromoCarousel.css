@@ -10,7 +10,6 @@
 
 .carousel-block button{
     border: none;
-
     transition: transform 500ms ease;
 }
 
@@ -37,8 +36,8 @@
     transition: transform 500ms ease;
 
     @media(max-width: 750px) {
-        margin: 2px;
-        min-width: 48%;
+        margin: 5px;
+        min-width: 30%;
     }
 }
 
@@ -68,7 +67,7 @@
     font-size: 13px;
 
     @media(max-width: 750px) {
-        font-size: 10px;
+        font-size: 13px;
     }
 }
 
@@ -77,7 +76,7 @@
     color: #625F60;
 
     @media(max-width: 750px) {
-        font-size: 11px;
+        font-size: 12px;
     }
 }
 

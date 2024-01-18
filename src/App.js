@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
-import './index.css';
-
+import Order from './pages/Order';
 import About from './pages/About';
 import Library from './pages/Library';
 import Shop from "./pages/Shop";
@@ -10,6 +9,8 @@ import Home from './pages/Home';
 import ShopBookPage from './pages/ShopBookPage';
 import NotFound from './pages/NotFound';
 import LibraryBookPage from './pages/LibraryBookPage';
+
+import './index.css';
 
 function App() {
   return (
@@ -29,13 +30,9 @@ function App() {
                 <Route exact path='/library' element={<Library condition="Б/У"/>} />
                 <Route exact path='/library/:bookId' element={<LibraryBookPage />} />
 
-                {/* <Route exact path='/order' element={<Order/>} /> */}
+                <Route exact path='/order' element={<Order/>} />
 
                 <Route exact path='*' element={<NotFound/>} />
-
-                
-                
-
             </Routes>
         </Router>
   </>
