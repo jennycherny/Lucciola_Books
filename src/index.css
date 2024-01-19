@@ -56,10 +56,10 @@ input[type="checkbox"]:checked {
   padding: 0px 100px;
 
   @media(max-width: 1400px) {
-    padding: 0px 20px;
+    padding: 0px 10px;
   }
   @media(max-width: 750px) {
-    padding: 0px 5px;
+    padding: 0px;
   }
 }
 
@@ -67,6 +67,7 @@ input[type="checkbox"]:checked {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
+  align-items: center;
   text-align: center;
   margin: 20px 8px;
 

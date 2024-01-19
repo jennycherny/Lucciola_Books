@@ -11,6 +11,12 @@ const Sort = ({ onChangeSort }) => {
     const selectedSort = sortTypes[selected]; 
 
     const onClickSortList = (i) => {
+
+        if (selected === i) {
+            setOpen(false);
+            return;
+        }
+        
         setSelected(i);
         setOpen(false);
         setSortDirection('desc');
@@ -42,7 +48,7 @@ const Sort = ({ onChangeSort }) => {
                 <span className='selected__sort'onClick={() => setOpen(!open)}>{selectedSort}</span>
             </div>
             {open && (
-                <div className='sort__popup'>
+                <div className='sort__popup' onClick={(e) => e.stopPropagation()}>
                 <ul>
                     {sortTypes.map((name, i) => (
                         <li
@@ -56,6 +62,7 @@ const Sort = ({ onChangeSort }) => {
                 </ul>
             </div>
             )}
+        {open && <div className="overlay" onClick={() => setOpen(false)}></div>}
         </div>
     );
 };

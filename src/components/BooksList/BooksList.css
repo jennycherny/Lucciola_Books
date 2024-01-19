@@ -1,6 +1,10 @@
 main {
   display: flex;
   width: 100%;
+}
+
+main .books-list {
+  margin: auto 20px;
   flex-flow: row wrap;
   justify-content: center;
 
@@ -18,22 +22,20 @@ main {
     grid-row-gap: 15px;
   } 
   @media(max-width: 750px) {
-    /* margin: 0px 20px; */
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 5px;
+    grid-column-gap: 3px;
     grid-row-gap: 5px;
+    overflow: hidden; 
   }
 }
 
 main .item {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 
-  border-radius: 5px;
   transition: transform 500ms ease;
 }
 

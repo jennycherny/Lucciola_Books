@@ -215,11 +215,22 @@
         }
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Здесь можно настроить прозрачность фона */
+    z-index: 9; /* Меньше, чем z-index вашего .filter__popup, чтобы быть под ним */
+}
+
 @media (max-width: 750px) {
     .filter__popup {
         position: fixed;
+        z-index: 10;
         bottom: 0;
-        height: calc(1/1.7 * 100vh); /* 2/3 экрана в высоту */
+        height: calc(1/1.5 * 100vh); /* 2/3 экрана в высоту */
         width: 91%;
         overflow-y: scroll;
         
@@ -229,10 +240,10 @@
         font-size: 18px;
     }
 
-    
-
     .filter__text {
         display: none;
       }
+
+
   }
   

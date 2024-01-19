@@ -40,15 +40,29 @@
   display: none;
 }
 
-@media (min-width: 750px) {
-  .navbar {
-    display: flex !important;
+.navbar-dekstop {
+  display: flex;
+  @media (max-width: 750px) {
+    display: none;
+  }
+
+}
+
+.burger-icon-header {
+  display: none;
+}
+
+@media (max-width: 750px) {
+
+  .burger-icon-header {
+    display: block;
   }
 }
 
 .nav-item {
   padding: 0 10px;
   transition: transform 500ms ease;
+  display: flex;
 }
 
 .nav-item:hover, .nav-item:active {
