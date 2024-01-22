@@ -67,7 +67,7 @@ const Home = () => {
                     <img src={orderFrame} alt=''/>
                 </div>
             </div>
-        {/* <Footer/> */}
+        <Footer/>
         </div>
         );
 }

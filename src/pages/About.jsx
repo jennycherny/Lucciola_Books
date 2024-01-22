@@ -13,6 +13,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { PiTelegramLogo } from "react-icons/pi";
 import { MdOutlinePhone } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md"; 
+import Footer from '../components/Footer/Footer';
 
 const About = () => {
     return (
@@ -77,15 +78,15 @@ const About = () => {
                             <div className="socialmedia__icons">
                                 <button className='feedback__button'>
                                     <a href="https://t.me/lucciola_books" target="_blank" rel="noreferrer" 
-                                className='telegram'><PiTelegramLogo size={30}/></a>
+                                className='telegram'><PiTelegramLogo size={24}/></a>
                                 </button>
                                 <button className='feedback__button'>
                                     <a href="tel:+995599700895" target="_blank" rel="noreferrer"
-                                    className='phone'><MdOutlinePhone size={30}/></a>
+                                    className='phone'><MdOutlinePhone size={24}/></a>
                                 </button>
                                 <button className='feedback__button'>
                                     <a href="mailto:lucciola.books@gmail.com"target="_blank" rel="noreferrer"
-                                    className='mail'><MdOutlineMail size={30}/></a>
+                                    className='mail'><MdOutlineMail size={24}/></a>
                                 </button>
                                 
                             </div>
@@ -95,6 +96,7 @@ const About = () => {
                        <img src={smFrame} alt="" /> 
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

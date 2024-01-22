@@ -101,6 +101,7 @@ main h3 {
   font-size: 15px;
 
   transition: all 400ms ease;
+  cursor: pointer;
 
   @media(max-width: 750px) {
     padding: 3px 5px;
@@ -141,6 +142,7 @@ main h3 {
   font-size: 15px;
 
   transition: all 400ms ease;
+  cursor: pointer;
 }
 
 .loadmore button:hover {

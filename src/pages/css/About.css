@@ -170,7 +170,7 @@
 }
 
 .socialmedia__block h2 {
-    font-size: 22px;
+    font-size: 20px;
     margin: 0 auto;
 
     @media(max-width: 750px) {
@@ -185,7 +185,7 @@
     border: 1px solid #2F2E41;
     border-radius: 10px;
 
-    font-size: 20px;
+    font-size: 18px;
 
     transition: all 400ms ease;
     cursor: pointer;

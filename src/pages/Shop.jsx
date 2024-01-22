@@ -1,13 +1,16 @@
 import React from 'react';
 
+
 import BooksList from '../components/BooksList/BooksList';
 import Filters from '../components/Filters/Filters';
 import Sort from '../components/Sort/Sort';
 import Search from '../components/Search/Search';
 import Hook from '../components/Hooks/Hook';
 import useBookFilters from '../components/useBookFilters/useBookFilters';
+import Footer from '../components/Footer/Footer';
 
 import './../index.css'
+
 
 const Shop = ({ condition }) => {
     const { data, isLoading } = Hook();
@@ -41,6 +44,7 @@ const Shop = ({ condition }) => {
       } = useBookFilters(data, condition);
 
     return (
+        <div className="shop__container">
         <div className='wrapper' >
             <useBookFilters
                 selectedGenres={selectedGenres}
@@ -103,6 +107,8 @@ const Shop = ({ condition }) => {
                     )}
                 </>
                 )}
+        </div>
+        <Footer/>
         </div>
                 
     );

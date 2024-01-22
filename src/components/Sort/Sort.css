@@ -2,7 +2,10 @@
     position: relative;
     font-size: 14px;
     color: #625F60;
-    margin: auto 10px;
+    /* margin: auto 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media(max-width: 750px) {
         margin: auto 5px;
@@ -23,7 +26,7 @@
 
 .sort__label svg {
     margin-right: 6px;
-    width: 17px; 
+    width: 16px; 
 }
  
 .sort__label .selected__sort{
@@ -69,8 +72,7 @@
       position: absolute;
       z-index: 10;
       
-      right: 0;
-      margin-top: 15px;
+      margin-top: 140px;
       background: #ffffff;
       box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
       border-radius: 10px;

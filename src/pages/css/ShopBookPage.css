@@ -15,7 +15,7 @@
     width: 60%;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.3fr;
     grid-template-rows: repeat(3, auto);
     gap: 10px;
 

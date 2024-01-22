@@ -6,6 +6,7 @@ import Sort from '../components/Sort/Sort';
 import Search from '../components/Search/Search';
 import Hook from '../components/Hooks/Hook';
 import useBookFilters from '../components/useBookFilters/useBookFilters';
+import Footer from '../components/Footer/Footer';
 
 const Library = ({ condition }) => {
     const { data, isLoading } = Hook();
@@ -39,6 +40,7 @@ const Library = ({ condition }) => {
       } = useBookFilters(data, condition);
     
     return (
+        <div className="library__container">
         <div className='wrapper' >
             <useBookFilters
                 selectedGenres={selectedGenres}
@@ -101,6 +103,8 @@ const Library = ({ condition }) => {
                 )}
             </>
             )}
+    </div>
+    <Footer/>
     </div>
     );
   };
