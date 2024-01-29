@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import BooksList from '../components/BooksList/BooksList';
 import Filters from '../components/Filters/Filters';
 import Sort from '../components/Sort/Sort';

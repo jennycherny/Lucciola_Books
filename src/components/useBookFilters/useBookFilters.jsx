@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useCart } from '../Providers/CartProvider';
 
 const useBookFilters = (data, condition) => {
     const [originalItems, setOriginalItems] = useState([]);
@@ -27,7 +28,7 @@ const useBookFilters = (data, condition) => {
         setItems(data);
       }, [data, condition]);
 
-      useEffect(() => {
+    useEffect(() => {
         if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
             filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
         }
@@ -179,6 +180,14 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
   const loadMoreBooks = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 20);
   };
+  const { buyCart, rentCart } = useCart();
+
+  useEffect(() => {
+    if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
+      console.log('Calling filtersAndSortings from Cart');
+        filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
+    }
+  }, [selectedGenres, sortType, sortDirection, minPrice, maxPrice, minAge, maxAge, searchPlace, data, condition, filtersAndSortings]);
 
   return {
     originalItems,

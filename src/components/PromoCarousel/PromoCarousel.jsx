@@ -90,11 +90,13 @@ const PromoCarousel = ({ condition }) => {
                 >
                 {promoBooks.map((book) => (
                     <div className='item' key={book.id}>
-                    <Link to={`/library/${book.id}`} className='cards-link'>
+                    <Link 
+                        to={`/${condition === 'Новая' ? 'shop' : 'library'}/${book.id}`} 
+                        className='cards-link'>                        
                         <img src={book.img} alt='Обложка книги' className='book-item-img' />
                         <div className='cardText'>
-                        <h4 className='title'>{book.title}</h4>
-                        <h5 className='author'>{book.author}</h5>
+                            <h4 className='title'>{book.title}</h4>
+                            <h5 className='author'>{book.author}</h5>
                         </div>
                     </Link>
                     </div>

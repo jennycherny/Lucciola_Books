@@ -1,0 +1,130 @@
+.cart-container {
+    margin: 50px 300px;
+    color: #2B2B2B;
+
+    @media(max-width: 1400px) {
+        margin: 40px 150px;
+    }
+
+    @media(max-width: 750px) {
+        margin: 40px 20px 40px 10px;
+    }
+}
+
+.cart-container h2 {
+    margin: 5px auto;
+}
+
+.cart-container ul {
+    margin-bottom: 30px;
+}
+
+.cart-container p {
+    @media(max-width: 1400px) {
+        display: none;
+    }
+}
+
+.cart-book {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #DEDEDE;
+}
+
+.cart-book-title {
+    display: flex;
+    align-items: center;
+}
+
+.cart-book-title div {
+    width: 270px;
+
+    @media(max-width: 1400px) {
+        width:100%;
+        max-width: 200px;
+    }
+
+    @media(max-width: 750px) {
+        width:100%;
+        max-width: 120px;
+    }
+}
+
+.cart-book img {
+    margin-right: 20px;
+
+    max-width: 100px;
+    border-radius: 10px;
+}
+
+.cart-book h4 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.cart-book h5 {
+    font-size: 15px;
+}
+
+.cart-book button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.cart-book button:hover {
+    transform: scale(1.07);
+    color: #5e5b7a;
+}
+
+.cart-book svg {
+    width: 26px;
+}
+
+.total-price {
+    margin: 20px auto;
+
+    display: flex;
+    justify-content: end;
+    text-align: right;
+
+    font-size: 18px;
+}
+
+.total-price span {
+    font-weight: bold;
+}
+
+.cart-buy-button {
+    margin: 20px auto;
+    display: flex;
+    justify-content: end;
+}
+
+.cart-buy-button button {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+
+    border: 1px solid #2F2E41;
+    border-radius: 7px;
+
+    font-size: 17px;
+
+    transition: all 400ms ease;
+    cursor: pointer;
+}
+
+.cart-buy-button button:hover {
+    background: #2F2E41;
+    transform: scale(1.03);
+    border: 1px solid #2F2E41;
+    color: #ffff;
+}
+
+.cart-buy-button button span {
+    margin-left: 7px;
+}

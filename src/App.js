@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
+import Cart from './pages/Cart';
+import Order from './pages/Order';
 import Preorder from './pages/Preorder';
 import About from './pages/About';
 import Library from './pages/Library';
@@ -30,6 +32,8 @@ function App() {
                 <Route exact path='/library' element={<Library condition="Б/У"/>} />
                 <Route exact path='/library/:bookId' element={<LibraryBookPage />} />
 
+                <Route exact path='/cart' element={<Cart/>} />
+                <Route exact path='/order' element={<Order/>} />
                 <Route exact path='/preorder' element={<Preorder/>} />
 
                 <Route exact path='*' element={<NotFound/>} />

@@ -88,11 +88,11 @@ main h3 {
 }
 
 .add-to-cart {
-  margin: 8px 5px 5px 0px;
-
+  margin: 8px 6px 5px 0px;
   padding: 5px 7px;
+  display: flex;
+  align-items: center;
 
-  border: none;
   border-radius: 5px;
   background: transparent;
   color: #2F2E41;
@@ -109,12 +109,24 @@ main h3 {
   }
 }
 
+.added {
+  background: #2F2E41;
+  border: 1px solid #2F2E41;
+  color: #ffff;
+}
+
 .add-to-cart:hover {
   background: #2F2E41;
   transform: 0;
   border: 1px solid #2F2E41;
   color: #ffff;
 }
+
+/* .added:hover { */
+  /* background: #6f6e8c;
+  color: #ffff;
+  border: 1px solid #2F2E41;
+} */
 
 .add-to-cart svg {
   margin-right: 5px;

@@ -17,3 +17,7 @@
     
     font-size: 12px;
 }
+
+.library-buttons {
+    display: flex;
+}

@@ -53,7 +53,7 @@ const Home = () => {
                         </h1>
                         <div className='order__buttons'>
                             <p>
-                                <a href="/order" className='home-button'>
+                                <a href="/preorder" className='home-button'>
                                     Перейти к предзаказу
                                 </a> 
                             </p>
