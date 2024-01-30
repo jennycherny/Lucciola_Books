@@ -97,7 +97,6 @@ const Cart = () => {
           <EmptyCartPlaceholder />
         )}
         </div>
-        <Footer/>
         </div>
     );
 };
