@@ -249,7 +249,7 @@
 
         font-size: 20px;
         text-align: center;
-        white-space: wrap;  
+        white-space: normal;  
     }
     .library__block__text p {
         display: block;
@@ -268,7 +268,7 @@
     }
     .order__block__text h1 {
         font-size: 20px;
-        white-space: wrap;
+        white-space: normal;
         margin: 0px auto;
         width: 70%;
     }
