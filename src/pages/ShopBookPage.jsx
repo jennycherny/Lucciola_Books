@@ -5,6 +5,7 @@ import { useCart } from '../components/Providers/CartProvider';
 
 import './css/ShopBookPage.css'
 import { MdOutlineExpandMore, MdOutlineExpandLess } from "react-icons/md";
+import Footer from '../components/Footer/Footer';
 
 const ShopBookPage = () => {
     const { data, isLoading } = Hook();
@@ -121,6 +122,7 @@ const ShopBookPage = () => {
 
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

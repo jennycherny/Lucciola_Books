@@ -5,7 +5,8 @@ import './PromoCarousel.css'
 import { MdNavigateNext } from "react-icons/md";
 
 const PromoCarousel = ({ condition }) => {
-    const { data } = Hook();
+    const { data, isLoading  } = Hook();
+    
     const promoBooks = data.filter((book) => book.promo === true && book.condition === condition);
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,38 +37,42 @@ const PromoCarousel = ({ condition }) => {
         };
     }, [isPaused, promoBooks, isSwiping, currentIndex]);
     
-        const startCarousel = () => {
-            setCurrentIndex(0);
-        };
-        const handleMouseEnter = () => {
-            setIsPaused(true);
-        };
-        
-        const handleMouseLeave = () => {
-            setIsPaused(false);
-        };
+    if (isLoading) {
+        return null;
+    }
 
-        const handleStart = () => {
-            setIsPaused(true);
-            setStartPosition(currentIndex);
-            setIsSwiping(true); // isSwiping в true при начале свайпа
-        };
+    const startCarousel = () => {
+        setCurrentIndex(0);
+    };
+    const handleMouseEnter = () => {
+        setIsPaused(true);
+    };
+    
+    const handleMouseLeave = () => {
+        setIsPaused(false);
+    };
 
-        const handleMouseUp = () => {
-            setIsSwiping(false); // isSwiping в false при отпускании мыши
-        };
+    const handleStart = () => {
+        setIsPaused(true);
+        setStartPosition(currentIndex);
+        setIsSwiping(true); // isSwiping в true при начале свайпа
+    };
 
-        const handleTouchEnd = () => {
-            setIsSwiping(false); // Устанавливаем isSwiping в false при окончании касания
-        };
+    const handleMouseUp = () => {
+        setIsSwiping(false); // isSwiping в false при отпускании мыши
+    };
 
-        const nextSlide = () => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % promoBooks.length);
-        };
-        
-        const prevSlide = () => {
-            setCurrentIndex((prevIndex) => (prevIndex - 1 + promoBooks.length) % promoBooks.length);
-        };
+    const handleTouchEnd = () => {
+        setIsSwiping(false); // Устанавливаем isSwiping в false при окончании касания
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % promoBooks.length);
+    };
+    
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + promoBooks.length) % promoBooks.length);
+    };
   
     return (
         <div className='carousel-block'> 

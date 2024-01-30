@@ -1,11 +1,11 @@
 .cart {
     margin: 60px auto;
+    color: #2F2E41;
 }
 
 .cart-container {
     width: 60%;
     margin: auto;
-    color: #2B2B2B;
 
     @media(max-width: 1400px) {
         margin: 40px 150px;

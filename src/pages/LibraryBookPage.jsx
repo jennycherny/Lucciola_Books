@@ -4,6 +4,7 @@ import Hook from '../components/Hooks/Hook';
 import { useCart } from '../components/Providers/CartProvider';
 import './css/LibraryBookPage.css'
 import { MdOutlineExpandMore, MdOutlineExpandLess } from "react-icons/md";
+import Footer from '../components/Footer/Footer';
 
 const LibraryBookPage = () => {
     const { data, isLoading } = Hook();
@@ -143,6 +144,7 @@ const LibraryBookPage = () => {
                     
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
