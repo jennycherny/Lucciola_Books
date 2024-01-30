@@ -42,10 +42,15 @@
 
 .navbar-dekstop {
   display: flex;
-  @media (max-width: 750px) {
+}
+
+@media (max-width: 750px) {
+  .navbar-dekstop {
     display: none;
   }
-
+  .burger-icon-header {
+    display: block;
+  }
 }
 
 .burger-icon-header {

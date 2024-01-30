@@ -237,3 +237,13 @@
         max-width: 350px;
     }
 }
+
+@media(max-width: 750px) {
+    body.safari .delivery__block {
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    margin: 10px auto;
+  }
+}
+

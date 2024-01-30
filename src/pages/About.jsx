@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AboutTabs from '../components/AboutTabs/AboutTabs';
 import './css/About.css'
 
@@ -16,6 +16,14 @@ import { MdOutlineMail } from "react-icons/md";
 import Footer from '../components/Footer/Footer';
 
 const About = () => {
+
+    useEffect(() => {
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) {
+          document.body.classList.add('safari');
+        }
+      }, []);
+
     return (
         <div>
             <div className='about__container'>
@@ -32,7 +40,7 @@ const About = () => {
                     <h1>
                         <span>Доставка и оплата</span>
                     </h1>
-                    <div className="delivery__info">
+                    <div className={`delivery__info ${document.body.classList.contains('safari') ? 'safari' : ''}`}>
                         <img src={deliveryFrame} alt="" />
                         <div>
                             <p>Библиотека доступна только в Тбилиси, книги из магазина отправляем по всей Грузии</p>
