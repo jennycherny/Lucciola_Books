@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import LibraryBooksList from '../components/LibraryBooksList/LibraryBooksList';
 import Filters from '../components/Filters/Filters';
@@ -10,29 +10,6 @@ import Footer from '../components/Footer/Footer';
 
 const Library = ({ condition }) => {
     const { data, isLoading } = Hook();
-
-    const [buyCart, setBuyCart] = useState([]);
-    const [rentCart, setRentCart] = useState([]);
-
-    const addToBuyCart = (book) => {
-        setBuyCart((prevCart) => [...prevCart, book]);
-      };
-
-    const addToRentCart = (book) => {
-        setRentCart((prevCart) => [...prevCart, book]);
-      };
-      
-    const removeFromBuyCart = (bookToRemove) => {
-        setBuyCart((prevCart) =>
-          prevCart.filter((book) => book.id !== bookToRemove.id)
-        );
-      };
-
-    const removeFromRentCart = (bookToRemove) => {
-        setRentCart((prevCart) =>
-          prevCart.filter((book) => book.id !== bookToRemove.id)
-        );
-      };
 
     const {
         // originalItems,

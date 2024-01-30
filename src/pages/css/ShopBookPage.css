@@ -152,6 +152,19 @@
     padding-right: 5px;
 }
 
+.out-of-stock-message {
+    margin: 20px 0px;
+    padding: 5px 15px;
+
+    border: 2px solid rgb(203, 74, 74);
+    border-radius: 7px;
+
+    color: rgb(203, 74, 74);
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
 .bookpage-data-more {
     display: flex;
     align-items: center;
@@ -235,4 +248,14 @@
 
 .back-button:hover {
     transform: scale(1.03);
+}
+
+.bnf-container {
+    margin: 100px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.bnf-container p {
+    font-size: 20px;
 }

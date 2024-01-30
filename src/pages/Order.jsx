@@ -16,6 +16,8 @@ const Order = () => {
     const [deliveryMethod, setDeliveryMethod] = useState('delivery'); //выбираем вид доставки для табсов
     const [selectedCity, setSelectedCity] = useState('Тбилиси'); // выбираем город в качестве условия для нескольких функций
     const [hasRentBooks, setHasRentBooks] = useState(false); // проверяем, есть ли книги в аренду (возможны только по Тбилиси)
+    const [libraryMessageVisible, setLibraryMessageVisible] = useState(false); // показываем сообщение, если доставка книг в аренду НЕ в Тбилиси
+
     const totalPrice = calculateTotalPrice([...buyCart, ...rentCart]);
     const cities = ['Тбилиси', 'Батуми', 'Абаша', 'Амбролаури', 'Ахалкалаки', 'Ахалцихе', 'Ахмета', 
                     'Багдати', 'Болниси', 'Боржоми', 'Вале', 'Вани', 'Гагра', 'Гали', 'Гардабани', 'Гори', 
@@ -29,7 +31,14 @@ const Order = () => {
     useEffect(() => {
         const hasRentBooks = rentCart.length > 0;
         setHasRentBooks(hasRentBooks);
-      }, [rentCart]);
+
+        if (deliveryMethod === 'pickup') {
+            setLibraryMessageVisible(false);
+          } else {
+            // Если метод доставки - 'delivery' и есть арендованные книги, показываем сообщение
+            setLibraryMessageVisible(hasRentBooks);
+          }
+      }, [rentCart, deliveryMethod]);
 
     function calculateTotalPrice(cart) {
         return cart.reduce((total, book) => {
@@ -134,7 +143,7 @@ const Order = () => {
             <div className="pickup">
                 <div className="pickup-container" >
                     <div className='pickup-info'>
-                      <h4>Книги можно забрать у метро Исани, г. Тбилиси</h4>
+                      <p>Книги можно забрать у метро Исани, г. Тбилиси</p>
                       <p>Оставь свои контакты, и мы договоримся о дате и времени</p>
                       <form className='order-form'>
                         <div className="order-form-item">
@@ -182,14 +191,17 @@ const Order = () => {
             )}
         </div>
 
-        {hasRentBooks && selectedCity !== 'Тбилиси' && (
-            <p className=''>К сожалению, библиотека работает только в Тбилиси. Вернитесь в корзину, уберите арндованные книги и попробуйте выбрать город снова.</p>
+        {libraryMessageVisible && selectedCity !== 'Тбилиси' && (
+            <p className='order-warning'>
+                К сожалению, библиотека работает только в Тбилиси. 
+                Вернитесь в корзину, удалите арендованные книги и попробуйте выбрать город снова.
+            </p>
         )}
         <div className="order-payment">
             <button 
                 type="submit" 
                 className="order-pay-button"
-                disabled={hasRentBooks && selectedCity !== 'Тбилиси'}
+                disabled={hasRentBooks && deliveryMethod === 'delivery' && selectedCity !== 'Тбилиси'}            
             >
                 <MdOutlinePayment />
                 <span>Перейти к оплате</span>
