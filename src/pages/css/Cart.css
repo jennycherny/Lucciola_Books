@@ -1,5 +1,10 @@
+.cart {
+    margin: 60px auto;
+}
+
 .cart-container {
-    margin: 50px 300px;
+    width: 60%;
+    margin: auto;
     color: #2B2B2B;
 
     @media(max-width: 1400px) {
