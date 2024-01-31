@@ -8,16 +8,22 @@
     margin: auto;
 
     @media(max-width: 1400px) {
-        margin: 40px 150px;
+        width: 75%;
+        margin: 40px auto;
     }
 
     @media(max-width: 750px) {
-        margin: 40px 20px 40px 10px;
+        width: 85%;
+        margin: 40px auto;
     }
 }
 
 .cart-container h2 {
     margin: 5px auto;
+
+    @media(max-width: 750px) {
+        font-size: 18px;
+    }
 }
 
 .cart-container ul {
@@ -36,6 +42,10 @@
     align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid #DEDEDE;
+
+    @media(max-width: 750px) {
+        min-width: 260px;
+    }
 }
 
 .cart-book-title {
@@ -53,7 +63,8 @@
 
     @media(max-width: 750px) {
         width:100%;
-        max-width: 120px;
+        max-width: 100px;
+        margin-right: 10px;
     }
 }
 
@@ -62,15 +73,28 @@
 
     max-width: 100px;
     border-radius: 10px;
+
+    @media(max-width: 750px) {
+        max-width: 80px;
+        margin-right: 10px;
+    }
 }
 
 .cart-book h4 {
     font-weight: bold;
     font-size: 16px;
+
+    @media(max-width: 750px) {
+        font-size: 12px;
+    }
 }
 
 .cart-book h5 {
     font-size: 15px;
+
+    @media(max-width: 750px) {
+        font-size: 12px;
+    }
 }
 
 .cart-book button {
@@ -89,6 +113,12 @@
     width: 26px;
 }
 
+.cart-book-price {
+    @media(max-width: 750px) {
+        text-align: center;
+    }
+}
+
 .total-price {
     margin: 20px auto;
 
@@ -97,6 +127,10 @@
     text-align: right;
 
     font-size: 18px;
+
+    @media(max-width: 750px) {
+        font-size: 16px;
+    }
 }
 
 .total-price span {

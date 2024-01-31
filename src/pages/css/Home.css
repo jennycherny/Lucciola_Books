@@ -284,12 +284,4 @@
     
   }
 
-  @media not all and (min-resolution: 0.001dpcm) { 
-    @supports (-webkit-appearance:none) {
-      .home__container h1 {
-        white-space: normal;
-      }
-    }
-  }
-
 

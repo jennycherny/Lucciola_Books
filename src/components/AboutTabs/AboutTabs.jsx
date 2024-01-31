@@ -48,13 +48,6 @@ const AboutTabs = () => {
     const handleTabClick = (index) => {
         setActiveTab(index);
     };
-
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isSafari) {
-      document.body.classList.add('safari');
-    }
-    
       return (
         <div className='tabs-conteiner'>
           <div className='tabs-buttons'>

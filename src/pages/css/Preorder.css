@@ -1,0 +1,57 @@
+.preorder-container {
+    margin: 70px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2F2E41;
+
+    @media(max-width: 750px) {
+        margin: 50px;
+    }
+} 
+
+.preorder-container img {
+    max-width: 600px;
+
+    @media(max-width: 1400px) {
+        max-width: 450px;
+    }
+
+    @media(max-width: 750px) {
+        max-width: 350px;
+    }
+}
+
+.preorder-title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.preorder-title h4 {
+    font-weight: bold;
+}
+
+.preorder-buttons {
+    margin: 20px 30px;
+    display: flex;
+    justify-content: end;
+}
+
+.preorder-submit-button {
+    padding: 5px 15px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #2F2E41;
+    border-radius: 7px;
+
+    transition: all 400ms ease;
+    cursor: pointer;
+}
+
+.preorder-submit-button:hover {
+    transform: scale(1.04);
+    background: #2F2E41;
+    color: #ffff;
+}

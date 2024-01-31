@@ -74,5 +74,32 @@
   color: #080808;
   transform: scale(1.05);
 }
+.cart-item-container {
+  display: flex;
+}
+
+.cart-item-container span {
+  margin-left: 6px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-counter {
+  border: 1px solid #2F2E41;
+  border-radius: 50%;
+  background: #2F2E41;
+  color: #ffff;
+  padding: 0px 5px;
+  font-size: 12px;
+
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: -5px;
+}
 
 

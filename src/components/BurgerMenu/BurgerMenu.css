@@ -17,7 +17,7 @@
 .burger-menu.open {
   border-radius: 10px;
   width: 53vw;
-  z-index: 31; 
+  z-index: 111111; 
 }
   
 .burger-icon {

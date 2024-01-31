@@ -44,6 +44,8 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const totalCartItems = buyCart.length + rentCart.length;
+
   return (
     <CartContext.Provider 
         value={{ 
@@ -54,7 +56,9 @@ export const CartProvider = ({ children }) => {
             addToBuyCart, 
             removeFromBuyCart, 
             addToRentCart, 
-            removeFromRentCart }}
+            removeFromRentCart,
+            totalCartItems, 
+      }}
     >
       {children}
     </CartContext.Provider>

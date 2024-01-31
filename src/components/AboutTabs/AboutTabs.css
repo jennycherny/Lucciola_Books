@@ -72,15 +72,3 @@
 .tabs-content p {
     padding-bottom: 7px;
 }
-
-
-@media(max-width: 750px) {
-    body.safari .tabs-buttons {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: column;
-        -webkit-flex-direction: column;
-        margin: 10px auto;
-    }
-}
