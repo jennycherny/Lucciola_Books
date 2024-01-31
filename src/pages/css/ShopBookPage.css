@@ -28,6 +28,7 @@
 
     @media(max-width: 750px) {
         width: 90%;
+        margin: 20px;
 
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, auto);
@@ -96,9 +97,9 @@
     border-radius: 10px;
 
     @media(max-width: 750px) {
-        /* max-width: 300px; */
+        max-width: 300px;
     }
-    }
+}
 
 .bookpage-desc {
     margin-left: 20px;
@@ -136,7 +137,8 @@
     cursor: pointer;
 
     @media(max-width: 750px) {
-        margin: 15px auto;
+        margin: 10px auto;
+        margin-bottom: 15px;
         font-size: 18px;
     }
 }
