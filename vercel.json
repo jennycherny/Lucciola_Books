@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/sendPreoderEmail.js": {
-        "runtime": "nodejs16"
+        "runtime": "nodejs14.x"
       }
     }
   }
