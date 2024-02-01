@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 export default async function handler(req, res) {
 
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     service: 'gmail',
     auth: {
       user: 'evchern.it@gmail.com',
-      pass: 'Imabadguy151199',
+      pass: 'wggk fghc vclf eubw',
     },
   });
 
@@ -36,8 +36,10 @@ export default async function handler(req, res) {
     const info = await transporter.sendMail(mailOptions);
     console.log('Email sent:', info);
     res.status(200).json({ message: 'Email sent', response: info.response });
+
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email:', error.message);    
+    console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
 }

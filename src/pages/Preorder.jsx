@@ -15,7 +15,8 @@ const Preorder = () => {
           telegram: e.target.elements.telegram.value,
           comment: e.target.elements.comment.value,
         };
-      
+        
+        console.log(formData)
         try {
           // Отправка данных на серверную функцию на Vercel
           const response = await fetch('/api/sendPreoderEmail', {
