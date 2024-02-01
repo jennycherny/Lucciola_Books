@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/sendPreoderEmail.js": {
+      "src/api/sendPreoderEmail.js": {
         "runtime": "nodejs14.x"
       }
     }
