@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer/Footer';
 import frame from '../assets/frame_preoder.svg'
 import './css/Preorder.css'
 
 const Preorder = () => {
 
+    const [isModalOpen, setModalOpen] = useState(false);
+    
+    const initialFormData = {
+        title: '',
+        author: '',
+        email: '',
+        telegram: '',
+        comment: '',
+      };
+
+    const [formData, setFormData] = useState(initialFormData);
+    
+    const closeModal = () => {
+        setModalOpen(false);
+      };
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
       
@@ -35,10 +51,23 @@ const Preorder = () => {
           // Обработка ответа
           const result = await response.json();
           console.log('Response from server:', result);  
+          // Открываем модальное окно
+
+          setModalOpen(true);
+          setFormData(initialFormData);
+
         } catch (error) {
           console.error('Error sending data:', error);
         }
       };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
 
     return (
         <div>
@@ -53,29 +82,56 @@ const Preorder = () => {
                         <div className="order-form-block">
                             <div className="order-form-item">
                                 <label>Название книги</label>
-                                <input type="text" name="title" required/>  
+                                <input 
+                                    type="text" 
+                                    name="title" 
+                                    value={formData.title}
+                                    onChange={handleInputChange}
+                                    required
+                                />  
                             </div>
                             
                             <div className="order-form-item">
                             <label>Автор</label>
-                                <input type="text" name="author" required/>  
+                                <input 
+                                    type="text" 
+                                    name="author" 
+                                    value={formData.author}
+                                    onChange={handleInputChange}  
+                                    required
+                                />  
                             </div>
                         </div>
 
                         <div className="order-form-block">
                             <div className="order-form-item">
                                 <label className='email'>Электронная почта:</label>
-                                <input type="email" name="email" required/>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required/>
                             </div>
                             <div className="order-form-item">
                                 <label className='phone-number'>Ник в Telegram/ Номер телефона</label>
-                                <input type="text" name="telegram" required/>
+                                <input 
+                                    type="text" 
+                                    name="telegram" 
+                                    value={formData.telegram}
+                                    onChange={handleInputChange}
+                                    required
+                                />
                             </div>
                         </div>
                                 
                         <div className="order-form-item">
                             <label className='more-info'>Комментарий</label>
-                            <textarea name="comment"/>
+                            <textarea 
+                                name="comment"
+                                value={formData.comment}
+                                onChange={handleInputChange}
+                            />
                         </div>
 
                         <div className="preorder-buttons">
@@ -91,6 +147,16 @@ const Preorder = () => {
                 <img src={frame} alt="" />
             </div>
             <Footer/>
+
+            {isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h4>Ваш предзаказ принят 🤓</h4>
+                        <p>Мы займемся им в ближайшее время</p>
+                        <button onClick={closeModal}>Спасибо!</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

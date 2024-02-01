@@ -24,13 +24,13 @@ app.post('/api/sendPreorderEmail', async (req, res) => {
       to: 'jennyaldridge629@gmail.com',
       subject: 'Новая заявка на заказ книги',
       text: `
-        Новая заявка на заказ книги:
+      <strong>Новая заявка на заказ книги</strong>
 
-        Название книги: ${formData.bookTitle}
-        Автор: ${formData.author}
-        Электронная почта: ${formData.email}
-        Telegram: ${formData.telegram}
-        Комментарий: ${formData.comment || 'Отсутствует'}
+      <strong>Название книги: </strong>${formData.bookTitle}
+      <strong>Автор: </strong>${formData.author}
+      <strong>Электронная почта: </strong>${formData.email}
+      <strong>Telegram: </strong>${formData.telegram}
+      <strong>Комментарий: </strong>${formData.comment || 'Отсутствует'}
       `,
     };
 

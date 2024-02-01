@@ -80,6 +80,7 @@ color: #2F2E41;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
     color: #212529;
+    font-size: 15px;
 }
 
 .order-form-item input:focus {
@@ -101,7 +102,7 @@ color: #2F2E41;
     width: 265px;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     color: #3b4045;
 }
 
@@ -117,6 +118,7 @@ color: #2F2E41;
     border: 1px solid #D9D9D9;
     border-radius: 10px;
     color: #212529;
+    font-size: 15px;
 }
 
 .order-form-item textarea:focus {

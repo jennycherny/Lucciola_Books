@@ -55,6 +55,40 @@ const Order = () => {
         setDeliveryMethod(method);
       };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const formData = {
+          city: selectedCity,
+          address: e.target.elements.address.value,
+          email: e.target.elements.email.value,
+          telegram: e.target.elements.telegram.value,
+          comment: e.target.elements.comment.value,
+          books: [...buyCart, ...rentCart],
+          deliveryMethod,
+          totalAmount: selectedCity === 'Тбилиси' ? totalPrice + 5 : totalPrice,
+        };
+    
+        // Отправить данные на сервер
+        try {
+          const response = await fetch('https://lucciola-books.vercel.app/api/sendOrderEmail', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+    
+          if (response.ok) {
+            console.log('Email sent successfully!');
+          } else {
+            console.error('Failed to send email.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+
     return (
         <div className="order-container">
         <div className="order-form-item choose">
@@ -104,24 +138,24 @@ const Order = () => {
                         
                         <div className="order-form-item">
                         <label>Адрес</label>
-                            <input type="text" required/>  
+                            <input type="text" name="address" required/>  
                         </div>
                     </div>
 
                     <div className="order-form-block">
                         <div className="order-form-item">
                             <label className='email'>Электронная почта:</label>
-                            <input type="email" required/>
+                            <input type="email" name="email" required/>
                         </div>
                         <div className="order-form-item">
                             <label className='phone-number'>Ник в Telegram/ Номер телефона</label>
-                            <input type="text" required/>
+                            <input type="text" name="telegram" required/>
                         </div>
                     </div>
                             
                     <div className="order-form-item">
                         <label className='more-info'>Комментарий</label>
-                        <textarea />
+                        <textarea name="comment"/>
                     </div>
                 </form>
 
@@ -145,14 +179,14 @@ const Order = () => {
                     <div className='pickup-info'>
                       <p>Книги можно забрать у метро Исани, г. Тбилиси</p>
                       <p>Оставь свои контакты, и мы договоримся о дате и времени</p>
-                      <form className='order-form'>
+                      <form className='order-form' id='order-form' onSubmit={handleSubmit}>
                         <div className="order-form-item">
                             <label className='email'>Электронная почта:</label>
-                            <input type="email" required/>
+                            <input type="email" name="email" required/>
                         </div>
                         <div className="order-form-item">
                             <label className='phone-number'>Ник в Telegram/ Номер телефона</label>
-                            <input type="text" required/>
+                            <input type="text" name="telegram" required/>
                         </div>
                       </form>
                     </div>
@@ -201,6 +235,7 @@ const Order = () => {
             <button 
                 type="submit" 
                 className="order-pay-button"
+                form='order-form'
                 disabled={hasRentBooks && deliveryMethod === 'delivery' && selectedCity !== 'Тбилиси'}            
             >
                 <MdOutlinePayment />

@@ -25,7 +25,7 @@ body {
   outline: none;
 }
 
-input {
+input, textarea, select {
   font-family: 'Montserrat', sans-serif;
 }
 
