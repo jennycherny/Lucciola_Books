@@ -15,21 +15,26 @@ const Preorder = () => {
           telegram: e.target.elements.telegram.value,
           comment: e.target.elements.comment.value,
         };
-        
-        console.log(formData)
+
+        console.log('Form data:', formData);
+
         try {
           // Отправка данных на серверную функцию на Vercel
-          const response = await fetch('/api/sendPreoderEmail', {
+            const response = await fetch('https://lucciola-books.vercel.app/api/sendPreorderEmail', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
           });
+
+          if (!response.ok) {
+            throw new Error('Failed to send data');
+          }
       
           // Обработка ответа
           const result = await response.json();
-          console.log(result);
+          console.log('Response from server:', result);  
         } catch (error) {
           console.error('Error sending data:', error);
         }
@@ -72,16 +77,16 @@ const Preorder = () => {
                             <label className='more-info'>Комментарий</label>
                             <textarea name="comment"/>
                         </div>
-                    </form>
 
-                    <div className="preorder-buttons">
-                        <div className="">
-                            <button 
-                                type="submit" 
-                                className="preorder-submit-button"
-                            >Отправить</button>
+                        <div className="preorder-buttons">
+                            <div className="">
+                                <button 
+                                    type="submit" 
+                                    className="preorder-submit-button"
+                                >Отправить</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <img src={frame} alt="" />
             </div>
