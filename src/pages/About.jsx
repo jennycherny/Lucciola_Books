@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AboutTabs from '../components/AboutTabs/AboutTabs';
 import './css/About.css'
 

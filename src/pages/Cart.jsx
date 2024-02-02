@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../components/Providers/CartProvider';
 import EmptyCartPlaceholder from '../components/EmptyCartPlaceholder/EmptyCartPlaceholder';
-import Footer from '../components/Footer/Footer';
 import './css/Cart.css'
 import { IoBagCheckOutline } from "react-icons/io5";
 

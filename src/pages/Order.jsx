@@ -57,8 +57,24 @@ const Order = () => {
 
       const handleSubmit = async (e) => {
         e.preventDefault();
+
+        console.log('buyCart:', buyCart);
+        console.log('rentCart:', rentCart);
+
+        if (!Array.isArray(buyCart) || !Array.isArray(rentCart)) {
+            console.error('Invalid buyCart or rentCart');
+            return;
+        }
     
         let formData;
+
+        const currentBuyCart = Array.isArray(buyCart) ? buyCart : [];
+        const currentRentCart = Array.isArray(rentCart) ? rentCart : [];
+
+        if (!Array.isArray(currentBuyCart) || !Array.isArray(currentRentCart)) {
+            console.error('Invalid buyCart or rentCart');
+            return;
+        }
     
         if (deliveryMethod === 'delivery') {
             formData = {
@@ -67,7 +83,8 @@ const Order = () => {
                 email: e.target.elements.email.value,
                 telegram: e.target.elements.telegram.value,
                 comment: e.target.elements.comment.value,
-                books: [...buyCart, ...rentCart],
+                buyCart: currentBuyCart,
+                rentCart: currentRentCart,
                 deliveryMethod,
                 totalAmount: selectedCity === 'Тбилиси' ? totalPrice + 5 : totalPrice,
             };
@@ -75,12 +92,13 @@ const Order = () => {
             formData = {
                 email: e.target.elements.email.value,
                 telegram: e.target.elements.telegram.value,
-                books: [...buyCart, ...rentCart],
+                buyCart: currentBuyCart,
+                rentCart: currentRentCart,
                 deliveryMethod,
                 totalAmount: totalPrice,
             };
         }
-    
+
         console.log('Form Data:', formData);
     
         // Отправить данные на сервер
