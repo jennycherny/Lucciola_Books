@@ -3,13 +3,21 @@ const cors = require('cors');
 const express = require('express');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+      app.use(cors());
+      app.use(express.json());
 
 app.post('/api/sendOrderEmail', async (req, res) => {
+    console.log('Received POST request to /api/sendOrderEmail');
   try {
     const formData = req.body;
+    console.log('Received form data:', formData);
+
     const { buyCart, rentCart, deliveryMethod, selectedCity } = formData;
+
+    console.log('buyCart:', buyCart);
+    console.log('rentCart:', rentCart);
+    console.log('deliveryMethod:', deliveryMethod);
+    console.log('selectedCity:', selectedCity);
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -20,23 +28,27 @@ app.post('/api/sendOrderEmail', async (req, res) => {
     });
 
     const calculateTotalPrice = (cart) => 
-        cart.reduce((total, book) => total + (book.inBuyCart ? book.price : book.rentPrice), 0);
+        cart.reduce((total, book) => 
+            total + ((book && book.inBuyCart) 
+            ? (book.price || 0) 
+            : (book.rentPrice || 0)), 
+            0);
 
     const mailOptions = {
-      from: 'evchern.it@gmail.com', // Замените на свой электронный адрес
-      to: 'jennyaldridge629@gmail.com', // Замените на адрес получателя
+      from: 'evchern.it@gmail.com',
+      to: 'jennyaldridge629@gmail.com',
       subject: 'Новый заказ книг',
       text: `
         Новый заказ книг:
 
-        ${buyCart.length > 0 ? 'Купленные книги:' : ''}
-        ${buyCart.map((book) => `${book.title}/${book.author} - ${book.price} GEL`).join('\n')}
+        Купленные книги
+        ${Array.isArray(buyCart) ? buyCart.map((book) => `${book.title}/${book.author} - ${book.price} GEL`).join('\n') : ''}
 
-        ${rentCart.length > 0 ? 'Арендованные книги:' : ''}
-        ${rentCart.map((book) => `${book.title}/${book.author} - ${book.rentPrice} GEL`).join('\n')}
+        Арендованные книги
+        ${Array.isArray(rentCart) ? rentCart.map((book) => `${book.title}/${book.author} - ${book.rentPrice} GEL`).join('\n') : ''}
 
         Общая стоимость: ${calculateTotalPrice([...buyCart, ...rentCart])} GEL
-
+        
         Вид доставки: ${deliveryMethod}
         Город: ${selectedCity}
         Адрес: ${formData.address}

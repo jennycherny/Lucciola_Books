@@ -55,39 +55,53 @@ const Order = () => {
         setDeliveryMethod(method);
       };
 
-    const handleSubmit = async (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
     
-        const formData = {
-          city: selectedCity,
-          address: e.target.elements.address.value,
-          email: e.target.elements.email.value,
-          telegram: e.target.elements.telegram.value,
-          comment: e.target.elements.comment.value,
-          books: [...buyCart, ...rentCart],
-          deliveryMethod,
-          totalAmount: selectedCity === 'Тбилиси' ? totalPrice + 5 : totalPrice,
-        };
+        let formData;
+    
+        if (deliveryMethod === 'delivery') {
+            formData = {
+                city: selectedCity,
+                address: e.target.elements.address.value,
+                email: e.target.elements.email.value,
+                telegram: e.target.elements.telegram.value,
+                comment: e.target.elements.comment.value,
+                books: [...buyCart, ...rentCart],
+                deliveryMethod,
+                totalAmount: selectedCity === 'Тбилиси' ? totalPrice + 5 : totalPrice,
+            };
+        } else if (deliveryMethod === 'pickup') {
+            formData = {
+                email: e.target.elements.email.value,
+                telegram: e.target.elements.telegram.value,
+                books: [...buyCart, ...rentCart],
+                deliveryMethod,
+                totalAmount: totalPrice,
+            };
+        }
+    
+        console.log('Form Data:', formData);
     
         // Отправить данные на сервер
         try {
-          const response = await fetch('https://lucciola-books.vercel.app/api/sendOrderEmail', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
+            const response = await fetch('https://lucciola-books.vercel.app/api/sendOrderEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
     
-          if (response.ok) {
-            console.log('Email sent successfully!');
-          } else {
-            console.error('Failed to send email.');
-          }
+            if (response.ok) {
+                console.log('Email sent successfully!');
+            } else {
+                console.error('Failed to send email.');
+            }
         } catch (error) {
-          console.error('Error:', error);
+             console.error('Error in handleSubmit:', error);
         }
-      };
+    };
 
     return (
         <div className="order-container">
@@ -120,7 +134,7 @@ const Order = () => {
 
         {deliveryMethod === 'delivery' && (
             <div className="order-form-container">
-                <form className='order-form'>
+                <form className='order-form' id='delivery-form' onSubmit={handleSubmit}>
                     <div className="order-form-block">
                         <div className="order-form-item">
                             <label>Город</label>
@@ -179,7 +193,7 @@ const Order = () => {
                     <div className='pickup-info'>
                       <p>Книги можно забрать у метро Исани, г. Тбилиси</p>
                       <p>Оставь свои контакты, и мы договоримся о дате и времени</p>
-                      <form className='order-form' id='order-form' onSubmit={handleSubmit}>
+                      <form className='order-form' id='pickup-form' onSubmit={handleSubmit}>
                         <div className="order-form-item">
                             <label className='email'>Электронная почта:</label>
                             <input type="email" name="email" required/>
@@ -235,7 +249,7 @@ const Order = () => {
             <button 
                 type="submit" 
                 className="order-pay-button"
-                form='order-form'
+                form={deliveryMethod === 'delivery' ? 'delivery-form' : 'pickup-form'}
                 disabled={hasRentBooks && deliveryMethod === 'delivery' && selectedCity !== 'Тбилиси'}            
             >
                 <MdOutlinePayment />
