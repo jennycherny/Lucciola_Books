@@ -191,7 +191,7 @@ const Order = () => {
                     </div>
                 </form>
 
-                {selectedCity === 'Тбилиси' ? (
+                {selectedCity === 'Тбилиси' && deliveryMethod === 'delivery' ? (
                     <div className="order-info-options">
                         <p className=''>Доставка по Тбилиси: 5 GEL</p>
                         <p className='price'>Общая стоимость: {totalPrice + 5} GEL</p>

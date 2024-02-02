@@ -60,7 +60,9 @@ app.post('/api/sendOrderEmail', async (req, res) => {
         ${rentCart.length > 0 ? 'Арендованные книги:' : ''}
         ${rentCart.map(book => `${book.title}, ${book.author} - ${(book.inBuyCart ? book.price : book.rentPrice) || 0} GEL`).join('\n')}
 
-        Общая стоимость: ${calculateTotalPrice([...buyCart, ...rentCart])} GEL
+        Общая стоимость: ${city === 'Тбилиси' && deliveryMethod === 'delivery' ? 
+                                calculateTotalPrice([...buyCart, ...rentCart]) + 5 : 
+                                calculateTotalPrice([...buyCart, ...rentCart])} GEL
 
         Вид доставки: ${deliveryMethod}
 
