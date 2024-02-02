@@ -76,7 +76,7 @@
 }
   
 .modal-content button {
-    margin: 15px 5px;
+    margin: 15px auto;
     padding: 5px 7px;
 
     border: 1px solid #2F2E41;
