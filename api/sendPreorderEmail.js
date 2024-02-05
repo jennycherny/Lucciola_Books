@@ -21,7 +21,7 @@ app.post('/api/sendPreorderEmail', async (req, res) => {
 
     const mailOptions = {
       from: 'evchern.it@gmail.com',
-      to: 'jennyaldridge629@gmail.com',
+      to: 'lucciola.books@gmail.com',
       subject: 'Новый предзаказ',
       text: `
       Новый предзаказ

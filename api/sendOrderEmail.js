@@ -49,7 +49,7 @@ app.post('/api/sendOrderEmail', async (req, res) => {
 
     const mailOptions = {
       from: 'evchern.it@gmail.com',
-      to: 'jennyaldridge629@gmail.com',
+      to: 'lucciola.books@gmail.com',
       subject: 'Новый заказ книг',
       text: `
         Новый заказ книг:

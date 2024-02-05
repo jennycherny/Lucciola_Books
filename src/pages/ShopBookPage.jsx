@@ -81,7 +81,6 @@ const ShopBookPage = () => {
 
                             {detailsOpen && (
                                 <div className={`book-details-expanded ${detailsOpen ? 'open' : ''}`}>
-                                    <h7 className="code">Артикул: {foundBook.code}</h7>
                                     <h7 className="category">Категория: {foundBook.category}</h7>
                                     <h7 className="publishing">Издательство: {foundBook.publishing}</h7>
                                     <h7 className="age">Возраст: {foundBook.age}+</h7>
