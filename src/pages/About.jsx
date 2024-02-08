@@ -35,7 +35,7 @@ const About = () => {
                     </h1>
                     <div className='delivery__info'>
                         <img src={deliveryFrame} alt="" />
-                        <div>
+                        <div className='delivery__text'>
                             <p>Библиотека доступна только в Тбилиси, книги из магазина отправляем по всей Грузии</p>
                             <p><CiDeliveryTruck size={18} className='truck-icon'/> Самовывоз — от станции метро «Исани», бесплатно </p>
                             <p><CiDeliveryTruck size={18} className='truck-icon'/> Доставка по Тбилиси — 5 GEL, срок — 1 день</p>

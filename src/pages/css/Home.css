@@ -154,7 +154,7 @@
 
 /* media */
 
-@media(max-width: 1400px) {
+@media(max-width: 1200px) {
     .home__container {
         width: 100%;
     }

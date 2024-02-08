@@ -7,7 +7,7 @@
     width: 60%;
     margin: auto;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         width: 75%;
         margin: 40px auto;
     }
@@ -31,7 +31,7 @@
 }
 
 .cart-container p {
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         display: none;
     }
 }
@@ -56,7 +56,7 @@
 .cart-book-title div {
     width: 270px;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         width:100%;
         max-width: 200px;
     }

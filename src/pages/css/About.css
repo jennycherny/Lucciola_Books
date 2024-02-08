@@ -4,7 +4,7 @@
     margin: 0 auto;
     color: #2F2E41;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         width: 90%;
     }
 }
@@ -71,14 +71,18 @@
 .delivery__info img {
     max-width: 400px;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         max-width: 300px;
     }
 }
 
-.delivery__info p {
+.delivery__text {
+    text-align: left;
+}
+
+.delivery__text p {
+    margin: 0;
     margin-bottom: 10px;
-    align-items: center; 
 }
 
 .truck-icon {
@@ -160,7 +164,7 @@
     text-align: center;
     padding-bottom: 30px;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         width: 90%;
     }
 
@@ -233,7 +237,7 @@
 .socialmedia img {
     max-width: 530px;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         max-width: 350px;
     }
 }

@@ -21,7 +21,7 @@
 
     color: #2F2E41;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         width: 80%;
         margin-top: 70px;
     }
@@ -243,7 +243,7 @@
 
     transition: all 400ms ease;
 
-    @media(max-width: 1400px) {
+    @media(max-width: 1200px) {
         top: 30px;
         left: 120px;
     }
