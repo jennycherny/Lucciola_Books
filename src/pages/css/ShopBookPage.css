@@ -243,7 +243,7 @@
         left: 120px;
     }
 
-    @media(max-width: 7500px) {
+    @media(max-width: 750px) {
         top: 25px;
         left: 40px;
     }
@@ -261,4 +261,35 @@
 
 .bnf-container p {
     font-size: 20px;
+}
+
+.thumbnails-container {
+    display: flex;
+    justify-content: start;
+}
+
+.bookpage-img-thumbnail {
+    width: 89px;
+    margin: 7px 15px;
+    margin-left: 0px;
+    cursor: pointer;
+    transition: all 400ms ease;
+
+    @media(max-width: 1200px) {
+        width: 80px;
+        margin: 6px;
+        margin-left: 0px;
+    }
+
+    @media(max-width: 750px) {
+        width: 70px;
+    }
+}
+
+.bookpage-img-thumbnail:hover {
+    transform: scale(1.03);
+}
+
+.bookpage-img-thumbnail img {
+    border-radius: 6px !important;
 }

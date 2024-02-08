@@ -15,7 +15,7 @@ const Hook = () => {
         const fetchData = async () => {
             try {
                 const { data, error } = await supabase
-                    .from('BooksData')  // Замените 'your_table' на имя вашей таблицы в Supabase
+                    .from('BooksData')  
                     .select('*');
 
                 if (data) {

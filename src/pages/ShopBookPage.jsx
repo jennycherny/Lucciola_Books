@@ -15,6 +15,7 @@ const ShopBookPage = () => {
 
     const foundBook = data.find(book => book.id === numericBookId);
     const [detailsOpen, setDetailsOpen] = useState(false);
+    const [currentImage, setCurrentImage] = useState(foundBook && foundBook.img ? foundBook.img : '');
     
     const isBookInCart = foundBook && buyCart.some((cartBook) => cartBook.id === foundBook.id);
     const cartButtonText = isBookInCart ? 'Добавлено' : 'В корзину';
@@ -43,7 +44,7 @@ const ShopBookPage = () => {
     if (!foundBook || foundBook.condition !== 'Новая') {
         return (
             <div className='bnf-container'>
-                <p>Book not found 😥</p>
+                <p>Книга не найдена 😥</p>
             </div>
         );
     }
@@ -53,6 +54,10 @@ const ShopBookPage = () => {
           <p key={index}>{paragraph}</p>
         ));
       };
+    
+    const handleThumbnailClick = (img) => {
+        setCurrentImage(img);
+    };
 
     return (
         <div>
@@ -67,29 +72,54 @@ const ShopBookPage = () => {
                         <h2>{foundBook.price} GEL</h2>
                     </div>
 
-                    <div className="bookpage-img">
-                        <img src={foundBook.img} alt="Обложка книги" />
-                        <div className="bookpage-data">
-                        <div onClick={handleToggleDetails} className="bookpage-data-more"> 
-                            <span>Подробнее о книге</span>
-                                {detailsOpen ? (
-                                    <MdOutlineExpandLess color='#6b6869' size="22px" className="bookpage-data-icon" />
-                                ) : (
-                                    <MdOutlineExpandMore color='#6b6869' size="22px" className="bookpage-data-icon" />
-                                )}
-                        </div>
-
-                            {detailsOpen && (
-                                <div className={`book-details-expanded ${detailsOpen ? 'open' : ''}`}>
-                                    <h7 className="category">Категория: {foundBook.category}</h7>
-                                    <h7 className="publishing">Издательство: {foundBook.publishing}</h7>
-                                    <h7 className="age">Возраст: {foundBook.age}+</h7>
-                                    <h7 className="cover">Обложка: {foundBook.cover}</h7>
-                                    <h7 className="condition">Состояние: {foundBook.condition}</h7>
+                    {foundBook && (
+                        <div className='bookpage-img'>
+                            {foundBook.img && (
+                                <img src={currentImage || foundBook.img} alt="Фото книги" />
+                            )}
+                            {foundBook.img2 && (
+                                <div className='thumbnails-container'>
+                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img)}>
+                                        <img src={foundBook.img} alt='Thumbnail 1' />
+                                    </div>
+                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img2)}>
+                                        <img src={foundBook.img2} alt='Thumbnail 2' />
+                                    </div>
+                                    {foundBook.img3 && (
+                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img3)}>
+                                        <img src={foundBook.img3} alt='Thumbnail 3' />
+                                    </div>
+                                    )}
+                                    {foundBook.img4 && (
+                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img4)}>
+                                        <img src={foundBook.img4} alt='Thumbnail 4' />
+                                    </div>
+                                    )}
                                 </div>
                             )}
-                    </div>
-                    </div>
+
+                            <div className="bookpage-data">
+                                <div onClick={handleToggleDetails} className="bookpage-data-more"> 
+                                    <span>Подробнее о книге</span>
+                                    {detailsOpen ? (
+                                        <MdOutlineExpandLess color='#6b6869' size="22px" className="bookpage-data-icon" />
+                                    ) : (
+                                        <MdOutlineExpandMore color='#6b6869' size="22px" className="bookpage-data-icon" />
+                                    )}
+                                </div>
+
+                                {detailsOpen && (
+                                    <div className={`book-details-expanded ${detailsOpen ? 'open' : ''}`}>
+                                        <h7 className="category">Категория: {foundBook.category}</h7>
+                                        <h7 className="publishing">Издательство: {foundBook.publishing}</h7>
+                                        <h7 className="age">Возраст: {foundBook.age}+</h7>
+                                        <h7 className="cover">Обложка: {foundBook.cover}</h7>
+                                        <h7 className="condition">Состояние: {foundBook.condition}</h7>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
 
                     <div className="bookpage-desc">
                         {foundBook.stock === 0 ? (
