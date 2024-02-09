@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 const useBookFilters = (data, condition) => {
     const [originalItems, setOriginalItems] = useState([]);
     const [items, setItems] = useState([]);
-    const [visibleItems, setVisibleItems] = useState(20); // Количество загруженных книг
+    const [visibleItems, setVisibleItems] = useState(24); // Количество загруженных книг
     
     const [isFiltersOpen, setIsFiltersOpen] = useState(false); ////состояние выпадающего списка фильтров
     const [selectedGenres, setSelectedGenres] = useState([]); //фильтрация по жанрам
@@ -116,7 +116,7 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
   };
 
   const loadMoreBooks = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 20);
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 24);
   };
 
   useEffect(() => {

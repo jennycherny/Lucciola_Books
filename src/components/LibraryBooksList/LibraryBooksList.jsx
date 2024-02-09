@@ -12,7 +12,7 @@ const LibraryBooksList = ({ items, isLoading }) => {
             <main> 
                 <div className='books-list'>
                     {isLoading ? (
-                        [...new Array(20)].map((_, index) => <Skeleton key={index} />)
+                        [...new Array(4)].map((_, index) => <Skeleton key={index} />)
                     ) : (
                         items.length > 0 ? (
                             items.map((book) => <SingleLibraryBookItem key={book.id} book={book} />)

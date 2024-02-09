@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import BooksList from '../components/BooksList/BooksList';
 import Filters from '../components/Filters/Filters';
@@ -8,14 +8,21 @@ import Hook from '../components/Hooks/Hook';
 import useBookFilters from '../components/useBookFilters/useBookFilters';
 import Footer from '../components/Footer/Footer';
 
-import './../index.css'
+import './../index.css';
+import './css/Shop.css';
 
+import { IoBookOutline } from "react-icons/io5";
+import { GoGift } from "react-icons/go";
 
 const Shop = ({ condition }) => {
     const { data, isLoading } = Hook();
+    const [isBooksSection, setIsBooksSection] = useState(true);
+
+    const toggleSection = (section) => {
+        setIsBooksSection(section === 'books');
+    };
 
     const {
-        // originalItems,
         items,
         visibleItems,
         selectedGenres,
@@ -37,7 +44,6 @@ const Shop = ({ condition }) => {
         toggleFilter,
         toggleSort,
         handleSortChange,
-        // filtersAndSortings,
         handleResetFilters,
         loadMoreBooks,
       } = useBookFilters(data, condition);
@@ -45,6 +51,21 @@ const Shop = ({ condition }) => {
     return (
         <div className="shop__container">
         <div className='wrapper' >
+            <div className="shop-section-buttons">
+                    <div className="section-button">
+                        <button onClick={() => toggleSection('books')} className={isBooksSection ? 'active' : ''}>
+                            <IoBookOutline size={16}/>
+                            <span>Книги</span>
+                        </button>
+                    </div>
+                    <div className="section-button">
+                        <button onClick={() => toggleSection('gifts')} className={!isBooksSection ? 'active' : ''}>
+                            <GoGift size={16}/>
+                            <span>Подарки</span>
+                        </button>
+                    </div>
+            </div>
+
             <useBookFilters
                 selectedGenres={selectedGenres}
                 isFilterOpen={isFilterOpen}

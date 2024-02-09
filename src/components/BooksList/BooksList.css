@@ -24,8 +24,8 @@ main .books-list {
   @media(max-width: 750px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 3px;
+    grid-template-rows: 4fr;
+    grid-column-gap: 6px;
     grid-row-gap: 5px;
     overflow: hidden; 
   }
@@ -107,7 +107,7 @@ main h3 {
     margin-top:2px;
     margin-bottom: 4px;
     padding: 4px 5px;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 

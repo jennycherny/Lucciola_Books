@@ -81,13 +81,13 @@ input[type="checkbox"]:checked {
   width: 100%;
   max-width: 1200px;
   margin: 20px auto;
-  padding: 0px 100px;
 
   @media(max-width: 1200px) {
-    padding: 0px 10px;
+    width: 80%;
   }
+
   @media(max-width: 750px) {
-    padding: 0px;
+    width: 100%;
   }
 }
 

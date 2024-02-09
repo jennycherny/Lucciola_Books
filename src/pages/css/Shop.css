@@ -1,0 +1,34 @@
+.shop-section-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px;
+    margin-top: 10px;
+    color: #2F2E41;
+}
+
+.section-button {
+    margin: 0px 10px;
+}
+
+.section-button button {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #2F2E41;
+    padding: 7px 30px;
+    border-radius: 7px;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.section-button button:hover {
+    transform: scale(1.04);
+    background: #2F2E41;
+    color: #ffff;
+}
+
+.section-button button span {
+    margin-left: 7px;
+}
