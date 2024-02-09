@@ -16,10 +16,10 @@ import { GoGift } from "react-icons/go";
 
 const Shop = ({ condition }) => {
     const { data, isLoading } = Hook();
-    const [isBooksSection, setIsBooksSection] = useState(true);
+    const [selectedSection, setSelectedSection] = useState('books');
 
     const toggleSection = (section) => {
-        setIsBooksSection(section === 'books');
+        setSelectedSection(section);
     };
 
     const {
@@ -46,87 +46,157 @@ const Shop = ({ condition }) => {
         handleSortChange,
         handleResetFilters,
         loadMoreBooks,
-      } = useBookFilters(data, condition);
+      } = useBookFilters(data, selectedSection === 'books' ? 'Новая' : 'Подарки');
 
     return (
         <div className="shop__container">
         <div className='wrapper' >
             <div className="shop-section-buttons">
                     <div className="section-button">
-                        <button onClick={() => toggleSection('books')} className={isBooksSection ? 'active' : ''}>
+                        <button onClick={() => toggleSection('books')} className={selectedSection === 'books' ? 'active' : ''}>
                             <IoBookOutline size={16}/>
                             <span>Книги</span>
                         </button>
                     </div>
                     <div className="section-button">
-                        <button onClick={() => toggleSection('gifts')} className={!isBooksSection ? 'active' : ''}>
+                    <button onClick={() => toggleSection('gifts')} className={selectedSection === 'gifts' ? 'active' : ''}>
                             <GoGift size={16}/>
                             <span>Подарки</span>
                         </button>
                     </div>
             </div>
-
-            <useBookFilters
-                selectedGenres={selectedGenres}
-                isFilterOpen={isFilterOpen}
-                isSortOpen={isSortOpen}
-                sortType={sortType}
-                sortDirection={sortDirection}
-                minAge={minAge}
-                maxAge={maxAge}
-                minPrice={minPrice}
-                maxPrice={maxPrice}
-                searchPlace={searchPlace}
-                handleGenreChange={handleGenreChange}
-                handleMinPriceChange={handleMinPriceChange}
-                handleMaxPriceChange={handleMaxPriceChange}
-                handleMinAgeChange={handleMinAgeChange}
-                handleMaxAgeChange={handleMaxAgeChange}
-                handleSearchChange={handleSearchChange}
-                toggleFilter={toggleFilter}
-                toggleSort={toggleSort}
-                handleSortChange={handleSortChange}
-                handleResetFilters={handleResetFilters}
-                loadMoreBooks={loadMoreBooks}
-                items={items}
-                visibleItems={visibleItems}
-                isLoading={isLoading}
-            />
-            <div className='search_place'>
-                <Filters 
-                    selectedGenres={selectedGenres}
-                    onClickGenre={handleGenreChange}
-                    isOpen={isFilterOpen}
-                    toggleFilter={toggleFilter}
-                    minPrice={minPrice}
-                    maxPrice={maxPrice}
-                    minAge={minAge}
-                    maxAge={maxAge}
-                    onMinPriceChange={handleMinPriceChange}
-                    onMaxPriceChange={handleMaxPriceChange}
-                    onMinAgeChange={handleMinAgeChange}
-                    onMaxAgeChange={handleMaxAgeChange} 
-                    onResetFilters={handleResetFilters}
-                />
-                <Sort 
-                    onChangeSort={handleSortChange}
-                    isOpen={isSortOpen}
-                    toggleSort={toggleSort}
-                />
-                <Search onSearchChange={handleSearchChange} />
-                </div>
-            {isLoading ? (
-                <BooksList items={[]} isLoading={isLoading} />
-                ) : (
+            {selectedSection === 'books' && (
                 <>
-                    <BooksList items={items.slice(0, visibleItems)} isLoading={isLoading} />
-                    {visibleItems < items.length && (
-                        <div className="loadmore">
-                            <button onClick={() => loadMoreBooks()}>Загрузить еще</button>
-                        </div>
+                    <useBookFilters
+                        selectedGenres={selectedGenres}
+                        isFilterOpen={isFilterOpen}
+                        isSortOpen={isSortOpen}
+                        sortType={sortType}
+                        sortDirection={sortDirection}
+                        minAge={minAge}
+                        maxAge={maxAge}
+                        minPrice={minPrice}
+                        maxPrice={maxPrice}
+                        searchPlace={searchPlace}
+                        handleGenreChange={handleGenreChange}
+                        handleMinPriceChange={handleMinPriceChange}
+                        handleMaxPriceChange={handleMaxPriceChange}
+                        handleMinAgeChange={handleMinAgeChange}
+                        handleMaxAgeChange={handleMaxAgeChange}
+                        handleSearchChange={handleSearchChange}
+                        toggleFilter={toggleFilter}
+                        toggleSort={toggleSort}
+                        handleSortChange={handleSortChange}
+                        handleResetFilters={handleResetFilters}
+                        loadMoreBooks={loadMoreBooks}
+                        items={items}
+                        visibleItems={visibleItems}
+                        isLoading={isLoading}
+                    />
+                    <div className='search_place'>
+                        <Filters 
+                            selectedGenres={selectedGenres}
+                            onClickGenre={handleGenreChange}
+                            isOpen={isFilterOpen}
+                            toggleFilter={toggleFilter}
+                            minPrice={minPrice}
+                            maxPrice={maxPrice}
+                            minAge={minAge}
+                            maxAge={maxAge}
+                            onMinPriceChange={handleMinPriceChange}
+                            onMaxPriceChange={handleMaxPriceChange}
+                            onMinAgeChange={handleMinAgeChange}
+                            onMaxAgeChange={handleMaxAgeChange} 
+                            onResetFilters={handleResetFilters}
+                        />
+                        <Sort 
+                            onChangeSort={handleSortChange}
+                            isOpen={isSortOpen}
+                            toggleSort={toggleSort}
+                        />
+                        <Search onSearchChange={handleSearchChange} />
+                    </div>
+                {isLoading ? (
+                    <BooksList items={[]} isLoading={isLoading} />
+                    ) : (
+                    <>
+                        <BooksList items={items.slice(0, visibleItems)} isLoading={isLoading} />
+                        {visibleItems < items.length && (
+                            <div className="loadmore">
+                                <button onClick={() => loadMoreBooks()}>Загрузить еще</button>
+                            </div>
+                        )}
+                    </>
                     )}
                 </>
-                )}
+            )}
+            {selectedSection === 'gifts' && (
+                // Верстка и компоненты для раздела "Подарки"
+                <>
+                    <useBookFilters
+                    selectedGenres={selectedGenres}
+                    isFilterOpen={isFilterOpen}
+                    isSortOpen={isSortOpen}
+                    sortType={sortType}
+                    sortDirection={sortDirection}
+                    minAge={minAge}
+                    maxAge={maxAge}
+                    minPrice={minPrice}
+                    maxPrice={maxPrice}
+                    searchPlace={searchPlace}
+                    handleGenreChange={handleGenreChange}
+                    handleMinPriceChange={handleMinPriceChange}
+                    handleMaxPriceChange={handleMaxPriceChange}
+                    handleMinAgeChange={handleMinAgeChange}
+                    handleMaxAgeChange={handleMaxAgeChange}
+                    handleSearchChange={handleSearchChange}
+                    toggleFilter={toggleFilter}
+                    toggleSort={toggleSort}
+                    handleSortChange={handleSortChange}
+                    handleResetFilters={handleResetFilters}
+                    loadMoreBooks={loadMoreBooks}
+                    items={items}
+                    visibleItems={visibleItems}
+                    isLoading={isLoading}
+                />
+                <div className='search_place'>
+                    {/* <Filters 
+                        selectedGenres={selectedGenres}
+                        onClickGenre={handleGenreChange}
+                        isOpen={isFilterOpen}
+                        toggleFilter={toggleFilter}
+                        minPrice={minPrice}
+                        maxPrice={maxPrice}
+                        minAge={minAge}
+                        maxAge={maxAge}
+                        onMinPriceChange={handleMinPriceChange}
+                        onMaxPriceChange={handleMaxPriceChange}
+                        onMinAgeChange={handleMinAgeChange}
+                        onMaxAgeChange={handleMaxAgeChange} 
+                        onResetFilters={handleResetFilters}
+                    /> */}
+                    <Sort 
+                        onChangeSort={handleSortChange}
+                        isOpen={isSortOpen}
+                        toggleSort={toggleSort}
+                    />
+                    <Search onSearchChange={handleSearchChange} />
+                    </div>
+                {isLoading ? (
+                    <BooksList items={[]} isLoading={isLoading} />
+                    ) : (
+                    <>
+                        <BooksList items={items.slice(0, visibleItems)} isLoading={isLoading} />
+                        {visibleItems < items.length && (
+                            <div className="loadmore">
+                                <button onClick={() => loadMoreBooks()}>Загрузить еще</button>
+                            </div>
+                        )}
+                    </>
+                    )}
+                </>
+            )} 
+            
         </div>
         <Footer/>
         </div>

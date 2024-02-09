@@ -32,3 +32,8 @@
 .section-button button span {
     margin-left: 7px;
 }
+
+.section-button  .active {
+    background: #2F2E41;
+    color: #ffff;
+}

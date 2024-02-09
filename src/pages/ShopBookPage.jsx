@@ -41,7 +41,7 @@ const ShopBookPage = () => {
         );
     }
 
-    if (!foundBook || foundBook.condition !== 'Новая') {
+    if (!foundBook || foundBook.condition === 'Б/У') {
         return (
             <div className='bnf-container'>
                 <p>Книга не найдена 😥</p>
@@ -98,26 +98,28 @@ const ShopBookPage = () => {
                                 </div>
                             )}
 
-                            <div className="bookpage-data">
-                                <div onClick={handleToggleDetails} className="bookpage-data-more"> 
-                                    <span>Подробнее о книге</span>
-                                    {detailsOpen ? (
-                                        <MdOutlineExpandLess color='#6b6869' size="22px" className="bookpage-data-icon" />
-                                    ) : (
-                                        <MdOutlineExpandMore color='#6b6869' size="22px" className="bookpage-data-icon" />
+                            {foundBook && foundBook.condition !== 'Подарки' && (
+                                <div className="bookpage-data">
+                                    <div onClick={handleToggleDetails} className="bookpage-data-more"> 
+                                        <span>Подробнее о книге</span>
+                                        {detailsOpen ? (
+                                            <MdOutlineExpandLess color='#6b6869' size="22px" className="bookpage-data-icon" />
+                                        ) : (
+                                            <MdOutlineExpandMore color='#6b6869' size="22px" className="bookpage-data-icon" />
+                                        )}
+                                    </div>
+
+                                    {detailsOpen && (
+                                        <div className={`book-details-expanded ${detailsOpen ? 'open' : ''}`}>
+                                            <h7 className="category">Категория: {foundBook.category}</h7>
+                                            <h7 className="publishing">Издательство: {foundBook.publishing}</h7>
+                                            <h7 className="age">Возраст: {foundBook.age}+</h7>
+                                            <h7 className="cover">Обложка: {foundBook.cover}</h7>
+                                            <h7 className="condition">Состояние: {foundBook.condition}</h7>
+                                        </div>
                                     )}
                                 </div>
-
-                                {detailsOpen && (
-                                    <div className={`book-details-expanded ${detailsOpen ? 'open' : ''}`}>
-                                        <h7 className="category">Категория: {foundBook.category}</h7>
-                                        <h7 className="publishing">Издательство: {foundBook.publishing}</h7>
-                                        <h7 className="age">Возраст: {foundBook.age}+</h7>
-                                        <h7 className="cover">Обложка: {foundBook.cover}</h7>
-                                        <h7 className="condition">Состояние: {foundBook.condition}</h7>
-                                    </div>
-                                )}
-                            </div>
+                            )}
                         </div>
                     )}
 
