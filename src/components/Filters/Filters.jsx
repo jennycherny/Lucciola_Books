@@ -22,6 +22,7 @@ const Filters = ({
     const [maxPrice, setMaxPrice] = useState('');
 
     const uniqueGenres = [...new Set(booksData.filter(book => book.category !== null).map(book => book.category))];
+    // const uniqueGiftsGategories = [...new Set(booksData.filter(book => book.giftsCategory !== null).map(book => book.giftsCategory))];
     // получаем ['Художественная литература', 'Биография', 'Психология', 'Искусство', 'Архитектура', 'Детская литература']
 
     const handleMinPriceChange = (event) => {
@@ -119,6 +120,7 @@ const Filters = ({
                             ))}
                         </ul>
                     </div>
+                    
                     <div className='popup__scnd__column'>
                         <div className='range'>
                             <div className='range__name'>Цена</div>
@@ -141,27 +143,27 @@ const Filters = ({
                                 />
                             </div>
                         </div>
-                        <div className='range'>
-                            <div className='range__name'>Возраст</div>
-                            <div className='range__input'>
-                                <div className='fromTo'>от</div>
-                                <input 
-                                    type="text" 
-                                    placeholder='0 лет' 
-                                    className='input'
-                                    value={minAge}   // Устанавливаем значение minAge
-                                    onChange={handleMinAgeChange}
-                                />
-                                <div className='fromTo'>до</div>
-                                <input 
-                                    type="text" 
-                                    placeholder='0 лет' 
-                                    className='input'
-                                    value={maxAge}   // Устанавливаем значение maxAge
-                                    onChange={handleMaxAgeChange}
-                                />
+                            <div className='range'>
+                                <div className='range__name'>Возраст</div>
+                                <div className='range__input'>
+                                    <div className='fromTo'>от</div>
+                                    <input 
+                                        type="text" 
+                                        placeholder='0 лет' 
+                                        className='input'
+                                        value={minAge}   // Устанавливаем значение minAge
+                                        onChange={handleMinAgeChange}
+                                    />
+                                    <div className='fromTo'>до</div>
+                                    <input 
+                                        type="text" 
+                                        placeholder='0 лет' 
+                                        className='input'
+                                        value={maxAge}   // Устанавливаем значение maxAge
+                                        onChange={handleMaxAgeChange}
+                                    />
+                                </div>
                             </div>
-                        </div>
                         <div className='popup__buttons'>
                             <button 
                                 onClick={handleResetFilters}

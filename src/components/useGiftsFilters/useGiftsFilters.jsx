@@ -1,21 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useBookFilters = (data, condition) => {
+const useGiftsFilters = (data, condition) => {
     const [originalItems, setOriginalItems] = useState([]);
     const [items, setItems] = useState([]);
     const [visibleItems, setVisibleItems] = useState(24); // Количество загруженных книг
     
     const [isFiltersOpen, setIsFiltersOpen] = useState(false); ////состояние выпадающего списка фильтров
-    const [selectedGenres, setSelectedGenres] = useState([]); //фильтрация по жанрам
+    const [giftsCategory, setGiftsCategory] = useState([]); //фильтрация по жанрам
     const [isFilterOpen, setIsFilterOpen] = useState(false); //состояние выпадающего списка фильтров
-
 
     const [isSortOpen, setIsSortOpen] = useState(false); //состояние выпадающего списка сортировки
     const [sortType, setSortType] = useState('по новизне'); // сортировка
     const [sortDirection, setSortDirection] = useState('desc'); //направления сортировки
-
-    const [minAge, setMinAge] = useState(''); // Состояние для минимального возраста
-    const [maxAge, setMaxAge] = useState(''); //Состояние для максимального возраста
 
     const [minPrice, setMinPrice] = useState(''); // Состояние для минимальной цены
     const [maxPrice, setMaxPrice] = useState(''); // Состояние для максимальной цены 
@@ -30,12 +26,14 @@ const useBookFilters = (data, condition) => {
         }
       }, [data, condition]);
 
-const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search) => {
+const filtersAndSortings = useCallback((genres, min, max, search) => {
+    console.log("Before filtering:", { genres, min, max, search });
+
     let filteredItems = originalItems.slice();
   
     // Фильтрация по жанру
     if (genres.length > 0) {
-      filteredItems = filteredItems.filter((book) => genres.includes(book.category));
+      filteredItems = filteredItems.filter((book) => genres.includes(book.giftsCategory));
     }
   
     // Фильтрация по цене
@@ -55,30 +53,13 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
       });
     }
   
-    // Фильтрация по возрасту
-    if (minAge !== '' || maxAge !== '') {
-      filteredItems = filteredItems.filter((book) => {
-        const age = book.age;
-  
-        if (minAge !== '' && maxAge !== '') {
-          return age >= parseInt(minAge, 10) && age <= parseInt(maxAge, 10);
-        } else if (minAge !== '') {
-          return age >= parseInt(minAge, 10);
-        } else if (maxAge !== '') {
-          return age <= parseInt(maxAge, 10);
-        }
-  
-        return true;
-      });
-    }
-
     // Поиск
     if (search !== '') {
         filteredItems = filteredItems.filter((book) => {
             const title = (book.title || '').toLowerCase();
             const author = (book.author || '').toLowerCase();
-            const searchLower = (search || '').toLowerCase(); // Добавили проверку на существование search
-        
+            const searchLower = (search || '').toLowerCase(); 
+
             return (title && title.includes(searchLower)) || (author && author.includes(searchLower));
         });
     }
@@ -100,16 +81,19 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
     if (condition) {
         filteredItems = filteredItems.filter((book) => book.condition === condition);
     }
+
+    if (condition === 'Подарки') {
+      filteredItems = filteredItems.filter((book) => book.condition === 'Подарки');
+    }
   
     setItems(filteredItems);
+    console.log("After filtering:", filteredItems);
   }, [originalItems, setItems, sortType, sortDirection, condition]);
 
   const handleResetFilters = () => { // Сбросить состояние фильтров
-    setSelectedGenres([]);
+    setGiftsCategory([]);
     setMinPrice('');
     setMaxPrice('');
-    setMinAge('');
-    setMaxAge('');
     setIsFiltersOpen(false);
   };
 
@@ -120,53 +104,44 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
   useEffect(() => {
     if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
       console.log('Calling filtersAndSortings from Cart');
-        filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
+        filtersAndSortings(giftsCategory, minPrice, maxPrice, searchPlace);
     }
   }, 
-[selectedGenres, sortType, sortDirection, minPrice, maxPrice, minAge, maxAge, searchPlace, data, condition, filtersAndSortings]);
+[giftsCategory, sortType, sortDirection, minPrice, maxPrice, searchPlace, data, condition, filtersAndSortings]);
 
   useEffect(() => {
     if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
-        filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
+        filtersAndSortings(giftsCategory, minPrice, maxPrice, searchPlace);
     }
-  }, [selectedGenres, sortType, sortDirection, minPrice, maxPrice, minAge, maxAge, searchPlace, data, condition, filtersAndSortings]);
+  }, [giftsCategory, sortType, sortDirection, minPrice, maxPrice, searchPlace, data, condition, filtersAndSortings]);
 
 
   const handleGenreChange = useCallback((selectedGenre) => {
-    setSelectedGenres((prevGenres) => {
+    setGiftsCategory((prevGenres) => {
         const updatedGenres = prevGenres.includes(selectedGenre)
               ? prevGenres.filter((genre) => genre !== selectedGenre)
               : [...prevGenres, selectedGenre];
-
-        filtersAndSortings(updatedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
+        
+        console.log("Updated genres:", updatedGenres); 
+        filtersAndSortings(updatedGenres, minPrice, maxPrice, searchPlace);
         return updatedGenres;
       });
-  }, [minPrice, maxPrice, minAge, maxAge, searchPlace, filtersAndSortings]);
+  }, [minPrice, maxPrice, searchPlace, filtersAndSortings]);
 
   const handleMinPriceChange = useCallback((value) => {
       setMinPrice(value);
-      filtersAndSortings(selectedGenres, value, maxPrice, minAge, maxAge, searchPlace);
-  }, [selectedGenres, maxPrice, minAge, maxAge, searchPlace, filtersAndSortings]);
+      filtersAndSortings(giftsCategory, value, maxPrice, searchPlace);
+  }, [giftsCategory, maxPrice, searchPlace, filtersAndSortings]);
 
   const handleMaxPriceChange = useCallback((value) => {
       setMaxPrice(value);
-      filtersAndSortings(selectedGenres, minPrice, value, minAge, maxAge, searchPlace);
-  }, [selectedGenres, minPrice, minAge, maxAge, searchPlace, filtersAndSortings]);
-
-  const handleMinAgeChange = useCallback((value) => {
-      setMinAge(value);
-      filtersAndSortings(selectedGenres, minPrice, maxPrice, value, maxAge, searchPlace);
-    }, [selectedGenres, minPrice, maxPrice, maxAge, searchPlace, filtersAndSortings]);
-
-  const handleMaxAgeChange = useCallback((value) => {
-      setMaxAge(value);
-      filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, value, searchPlace);
-      }, [selectedGenres, minPrice, maxPrice, minAge, searchPlace, filtersAndSortings]);
+      filtersAndSortings(giftsCategory, minPrice, value, searchPlace);
+  }, [giftsCategory, minPrice, searchPlace, filtersAndSortings]);
 
   const handleSearchChange = useCallback((value) => {
       setSearchPlace(value);
-      filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, value);
-      }, [selectedGenres, minPrice, maxPrice, minAge, maxAge, filtersAndSortings]);
+      filtersAndSortings(giftsCategory, minPrice, maxPrice, value);
+      }, [giftsCategory, minPrice, maxPrice, filtersAndSortings]);
 
   const toggleFilter = () => { // Закрыть список сортировки
       setIsFilterOpen(!isFilterOpen);
@@ -181,28 +156,24 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
   const handleSortChange = useCallback((selectedSort, newSortDirection) => {
       setSortType(selectedSort);
       setSortDirection(newSortDirection);
-      filtersAndSortings(selectedGenres, minPrice, maxPrice, selectedSort, newSortDirection, searchPlace);
-  }, [selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace, filtersAndSortings]);
+      filtersAndSortings(giftsCategory, minPrice, maxPrice, selectedSort, newSortDirection, searchPlace);
+  }, [giftsCategory, minPrice, maxPrice, searchPlace, filtersAndSortings]);
 
   return {
     originalItems,
     items,
     visibleItems,
-    selectedGenres,
+    giftsCategory,
     isFilterOpen,
     isSortOpen,
     sortType,
     sortDirection,
-    minAge,
-    maxAge,
     minPrice,
     maxPrice,
     searchPlace,
     handleGenreChange,
     handleMinPriceChange,
     handleMaxPriceChange,
-    handleMinAgeChange,
-    handleMaxAgeChange,
     handleSearchChange,
     toggleFilter,
     toggleSort,
@@ -213,4 +184,4 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
   };
 };
 
-export default useBookFilters;
+export default useGiftsFilters;
