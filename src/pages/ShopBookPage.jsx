@@ -14,6 +14,7 @@ const ShopBookPage = () => {
     const numericBookId = parseInt(bookId, 10);
 
     const foundBook = data.find(book => book.id === numericBookId);
+    console.log(foundBook)
     const [detailsOpen, setDetailsOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState(foundBook && foundBook.img ? foundBook.img : '');
     
@@ -77,23 +78,25 @@ const ShopBookPage = () => {
                             {foundBook.img && (
                                 <img src={currentImage || foundBook.img} alt="Фото книги" />
                             )}
-                            {foundBook.img2 && (
+                            {foundBook.images && (
                                 <div className='thumbnails-container'>
                                     <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img)}>
                                         <img src={foundBook.img} alt='Thumbnail 1' />
                                     </div>
-                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img2)}>
-                                        <img src={foundBook.img2} alt='Thumbnail 2' />
-                                    </div>
-                                    {foundBook.img3 && (
-                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img3)}>
-                                        <img src={foundBook.img3} alt='Thumbnail 3' />
-                                    </div>
+                                    {foundBook.images.img2 && (
+                                        <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.images.img2)}>
+                                            <img src={foundBook.images.img2} alt='Thumbnail 2' />
+                                        </div>
                                     )}
-                                    {foundBook.img4 && (
-                                    <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.img4)}>
-                                        <img src={foundBook.img4} alt='Thumbnail 4' />
-                                    </div>
+                                    {foundBook.images.img3 && (
+                                        <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.images.img3)}>
+                                            <img src={foundBook.images.img3} alt='Thumbnail 3' />
+                                        </div>
+                                    )}
+                                    {foundBook.images.img4 && (
+                                        <div className='bookpage-img-thumbnail' onClick={() => handleThumbnailClick(foundBook.images.img4)}>
+                                            <img src={foundBook.images.img4} alt='Thumbnail 4' />
+                                        </div>
                                     )}
                                 </div>
                             )}

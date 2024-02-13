@@ -14,16 +14,28 @@ const Hook = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data, error } = await supabase
-                    .from('BooksData')  
-                    .select('*');
-
-                if (data) {
+                const booksData = await supabase.from('BooksData').select('*');
+                const imagesData = await supabase.from('ImagesData').select('*');
+                console.log('ImagesData:', imagesData);
+                
+                if (booksData.error || imagesData.error) {
+                    setError(booksData.error || imagesData.error);
+                } else {
+                    const data = booksData.data.map(book => {
+                        const imagesForBook = imagesData.data
+                            .filter(image => image.id === book.id)
+                            .map(image => ({
+                                img2: image.img2,
+                                img3: image.img3,
+                                img4: image.img4
+                            }));
+                        return {
+                            ...book,
+                            images: imagesForBook.length > 0 ? imagesForBook[0] : null
+                        };
+                    });
+                
                     setData(data);
-                }
-
-                if (error) {
-                    setError(error);
                 }
             } catch (error) {
                 console.error('Ошибка при запросе данных:', error);

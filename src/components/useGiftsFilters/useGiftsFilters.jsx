@@ -27,7 +27,6 @@ const useGiftsFilters = (data, condition) => {
       }, [data, condition]);
 
 const filtersAndSortings = useCallback((genres, min, max, search) => {
-    console.log("Before filtering:", { genres, min, max, search });
 
     let filteredItems = originalItems.slice();
   
@@ -87,7 +86,6 @@ const filtersAndSortings = useCallback((genres, min, max, search) => {
     }
   
     setItems(filteredItems);
-    console.log("After filtering:", filteredItems);
   }, [originalItems, setItems, sortType, sortDirection, condition]);
 
   const handleResetFilters = () => { // Сбросить состояние фильтров
@@ -103,7 +101,6 @@ const filtersAndSortings = useCallback((genres, min, max, search) => {
 
   useEffect(() => {
     if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
-      console.log('Calling filtersAndSortings from Cart');
         filtersAndSortings(giftsCategory, minPrice, maxPrice, searchPlace);
     }
   }, 
@@ -122,7 +119,6 @@ const filtersAndSortings = useCallback((genres, min, max, search) => {
               ? prevGenres.filter((genre) => genre !== selectedGenre)
               : [...prevGenres, selectedGenre];
         
-        console.log("Updated genres:", updatedGenres); 
         filtersAndSortings(updatedGenres, minPrice, maxPrice, searchPlace);
         return updatedGenres;
       });
