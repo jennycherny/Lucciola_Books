@@ -14,28 +14,39 @@ const Hook = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const booksData = await supabase.from('BooksData').select('*');
-                const imagesData = await supabase.from('ImagesData').select('*');
-                console.log('ImagesData:', imagesData);
+
+                const { data: booksData, error: booksError } = await supabase
+                    .from('BooksData')
+                    .select('*');
+
+                const { data: promoData, error: promoError } = await supabase
+                    .from('Promo')
+                    .select('id, promo');
+
+                const { data: imagesData, error: imagesError } = await supabase
+                    .from('ImagesData')
+                    .select('id, img2, img3, img4');
+
+                const { data: languageData, error: languageError } = await supabase
+                    .from('Language')
+                    .select('id, language');
                 
-                if (booksData.error || imagesData.error) {
-                    setError(booksData.error || imagesData.error);
+                if (booksError || promoError || imagesError || languageError) {
+                    setError(booksError || promoError || imagesError || languageError);
                 } else {
-                    const data = booksData.data.map(book => {
-                        const imagesForBook = imagesData.data
-                            .filter(image => image.id === book.id)
-                            .map(image => ({
-                                img2: image.img2,
-                                img3: image.img3,
-                                img4: image.img4
-                            }));
+                    const processedData = booksData.map(book => {
+                        const promo = promoData.find(promo => promo.id === book.id);
+                        const images = imagesData.find(image => image.id === book.id);
+                        const language = languageData.find(language => language.id === book.id);
+
                         return {
                             ...book,
-                            images: imagesForBook.length > 0 ? imagesForBook[0] : null
+                            promo: promo ? promo.promo : null,
+                            images: images ? images : null,
+                            language: language ? language.language : null,
                         };
                     });
-                
-                    setData(data);
+                    setData(processedData);
                 }
             } catch (error) {
                 console.error('Ошибка при запросе данных:', error);
