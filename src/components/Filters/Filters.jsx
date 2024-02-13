@@ -21,8 +21,7 @@ const Filters = ({
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
-    const uniqueGenres = [...new Set(booksData.filter(book => book.category !== null).map(book => book.category))];
-    // const uniqueGiftsGategories = [...new Set(booksData.filter(book => book.giftsCategory !== null).map(book => book.giftsCategory))];
+    const uniqueGenres = [...new Set(booksData.filter(book => book.category && book.category.trim() !== '').map(book => book.category))];
     // получаем ['Художественная литература', 'Биография', 'Психология', 'Искусство', 'Архитектура', 'Детская литература']
 
     const handleMinPriceChange = (event) => {

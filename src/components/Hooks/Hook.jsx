@@ -14,10 +14,14 @@ const Hook = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-
                 const { data: booksData, error: booksError } = await supabase
                     .from('BooksData')
                     .select('*');
+                
+                const { data: giftsData, error: giftsError } = await supabase
+                    .from('GiftsData')
+                    .select('*');
+                console.log(giftsData);
 
                 const { data: promoData, error: promoError } = await supabase
                     .from('Promo')
@@ -31,22 +35,36 @@ const Hook = () => {
                     .from('Language')
                     .select('id, language');
                 
-                if (booksError || promoError || imagesError || languageError) {
-                    setError(booksError || promoError || imagesError || languageError);
+                const { data: rentedData, error: rentedError } = await supabase
+                    .from('Rented')
+                    .select('id, rented');
+                
+                if (booksError || giftsError || promoError || imagesError || languageError || rentedError) {
+                    setError(booksError || giftsError || promoError || imagesError || languageError || rentedError);
                 } else {
-                    const processedData = booksData.map(book => {
+                    const processedBooksData = booksData.map(book => {
                         const promo = promoData.find(promo => promo.id === book.id);
                         const images = imagesData.find(image => image.id === book.id);
                         const language = languageData.find(language => language.id === book.id);
+                        const rented = rentedData.find(rented => rented.id === book.id);
 
                         return {
                             ...book,
                             promo: promo ? promo.promo : null,
                             images: images ? images : null,
                             language: language ? language.language : null,
+                            rented: rented ? rented.rented : null,
                         };
                     });
-                    setData(processedData);
+
+
+                    const processedGiftsData = giftsData.map(gift => {
+                        return gift;
+                    });
+
+                    const combinedData = [...processedBooksData, ...processedGiftsData];
+                    
+                    setData(combinedData);
                 }
             } catch (error) {
                 console.error('Ошибка при запросе данных:', error);

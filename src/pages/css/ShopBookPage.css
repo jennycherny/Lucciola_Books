@@ -156,7 +156,8 @@
 }
 
 .out-of-stock-message {
-    margin: 20px 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     padding: 5px 15px;
 
     border: 2px solid rgb(203, 74, 74);
@@ -165,7 +166,19 @@
     color: rgb(203, 74, 74);
     font-size: 18px;
     font-weight: bold;
-    
+}
+
+.rented-message {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+
+    border: 2px solid #726BC0;
+    border-radius: 7px;
+
+    color: #726BC0;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .bookpage-data-more {

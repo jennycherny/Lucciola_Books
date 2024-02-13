@@ -24,7 +24,10 @@ const Shop = () => {
         setSelectedSection(section);
     };
 
+    const isGiftsSection = selectedSection === 'gifts';
+
     const {
+        visibleItems,
         items: bookItems,
         visibleItems: bookVisibleItems,
         isFilterOpen: isBookFilterOpen,
@@ -66,31 +69,6 @@ const Shop = () => {
         loadMoreBooks: loadMoreGiftItems,
       } = useGiftsFilters(data, 'Подарки');
 
-    // const {
-    //     items,
-    //     visibleItems,
-    //     selectedGenres,
-    //     isFilterOpen,
-    //     isSortOpen,
-    //     minAge,
-    //     maxAge,
-    //     minPrice,
-    //     maxPrice,
-    //     handleGenreChange,
-    //     handleMinPriceChange,
-    //     handleMaxPriceChange,
-    //     handleMinAgeChange,
-    //     handleMaxAgeChange,
-    //     handleSearchChange,
-    //     toggleFilter,
-    //     toggleSort,
-    //     handleSortChange,
-    //     handleResetFilters,
-    //     loadMoreBooks,
-    //   } = useBookFilters(data, selectedSection === 'books' ? 'Новая' : 'Подарки');
-
-
-
     return (
         <div className="shop__container">
             <div className='wrapper' >
@@ -108,48 +86,8 @@ const Shop = () => {
                             </button>
                         </div>
                 </div>
-                {selectedSection === 'books' && (
-                    <>
-                        <div className='search_place'>
-                            <Filters 
-                                selectedGenres={bookSelectedGenres}
-                                onClickGenre={handleBookGenreChange}
-                                isOpen={isBookFilterOpen}
-                                toggleFilter={toggleBookFilter}
-                                minPrice={bookMinPrice}
-                                maxPrice={bookMaxPrice}
-                                minAge={bookMinAge}
-                                maxAge={bookMaxAge}
-                                onMinPriceChange={handleBookMinPriceChange}
-                                onMaxPriceChange={handleBookMaxPriceChange}
-                                onMinAgeChange={handleBookMinAgeChange}
-                                onMaxAgeChange={handleBookMaxAgeChange}
-                                onResetFilters={handleBookResetFilters}
-                            />
-                            <Sort 
-                                onChangeSort={handleBookSortChange}
-                                isOpen={isBookSortOpen}
-                                toggleSort={toggleBookSort}
-                            />
-                            <Search onSearchChange={handleBookSearchChange} />
-                        </div>
-                    {isLoading ? (
-                        <BooksList items={[]} isLoading={isLoading} />
-                        ) : (
-                        <>
-                            <BooksList items={bookItems.slice(0, bookVisibleItems)} isLoading={isLoading} />
-                            {bookVisibleItems < bookItems.length && (
-                                <div className="loadmore">
-                                    <button onClick={() => loadMoreBookItems()}>Загрузить еще</button>
-                                </div>
-                            )}
-                        </>
-                        )}
-                    </>
-                )}
-                {selectedSection === 'gifts' && (
-                    <>
-                    <div className='search_place'>
+                <div className='search_place'>
+                    {isGiftsSection ? (
                         <GiftsFilters  
                             giftsCategory={selectedGiftCategory}
                             onClickGenre={handleGiftGenreChange}
@@ -161,27 +99,49 @@ const Shop = () => {
                             onMaxPriceChange={handleGiftMaxPriceChange}
                             onResetFilters={handleGiftResetFilters}
                         />
-                        <Sort 
-                            onChangeSort={handleGiftSortChange}
-                            isOpen={isGiftSortOpen}
-                            toggleSort={toggleGiftSort}
+                    ) : (
+                        <Filters 
+                            selectedGenres={bookSelectedGenres}
+                            onClickGenre={handleBookGenreChange}
+                            isOpen={isBookFilterOpen}
+                            toggleFilter={toggleBookFilter}
+                            minPrice={bookMinPrice}
+                            maxPrice={bookMaxPrice}
+                            minAge={bookMinAge}
+                            maxAge={bookMaxAge}
+                            onMinPriceChange={handleBookMinPriceChange}
+                            onMaxPriceChange={handleBookMaxPriceChange}
+                            onMinAgeChange={handleBookMinAgeChange}
+                            onMaxAgeChange={handleBookMaxAgeChange}
+                            onResetFilters={handleBookResetFilters}
                         />
-                        <Search onSearchChange={handleGiftSearchChange} />
+                    )}
+                    <Sort 
+                        onChangeSort={isGiftsSection ? handleGiftSortChange : handleBookSortChange}
+                        isOpen={isGiftsSection ? isGiftSortOpen : isBookSortOpen}
+                        toggleSort={isGiftsSection ? toggleGiftSort : toggleBookSort}
+                    />
+                    <Search onSearchChange={isGiftsSection ? handleGiftSearchChange : handleBookSearchChange} />
+                </div>
+                <BooksList 
+                    items={isGiftsSection ? giftItems.slice(0, giftVisibleItems) : bookItems.slice(0, bookVisibleItems)}
+                    isLoading={isLoading}
+                    isGiftsSection={isGiftsSection}
+                />
+                {isGiftsSection && (
+                    giftVisibleItems < giftItems.length && (
+                        <div className="loadmore">
+                            <button onClick={() => loadMoreGiftItems()}>Загрузить еще</button>
                         </div>
-                    {isLoading ? (
-                        <BooksList items={[]} isLoading={isLoading} />
-                        ) : (
-                        <>
-                            <BooksList items={giftItems.slice(0, giftVisibleItems)} isLoading={isLoading} />
-                            {giftVisibleItems < giftItems.length && (
-                                <div className="loadmore">
-                                    <button onClick={() => loadMoreGiftItems()}>Загрузить еще</button>
-                                </div>
-                            )}
-                        </>
-                        )}
-                    </>
-                )} 
+                    )
+                )}
+                {!isGiftsSection && (
+                    bookVisibleItems < bookItems.length && (
+                        <div className="loadmore">
+                            <button onClick={() => loadMoreBookItems()}>Загрузить еще</button>
+                        </div>
+                    )
+                )}
                 
             </div>
         <Footer/>

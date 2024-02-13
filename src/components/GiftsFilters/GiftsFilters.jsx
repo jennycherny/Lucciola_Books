@@ -17,7 +17,7 @@ const GiftsFilters = ({
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
 
-    const uniqueGiftsGategories = [...new Set(booksData.filter(book => book.giftsCategory !== null).map(book => book.giftsCategory))];
+    const uniqueGiftsGategories = [...new Set(booksData.filter(book => book.giftsCategory && book.giftsCategory.trim() !== '').map(book => book.giftsCategory))];
     // получаем ['Свечи', 'Ежедневники', 'Открытки', 'Наклейки']
 
     const handleMinPriceChange = (event) => {
