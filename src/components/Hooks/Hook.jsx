@@ -21,7 +21,6 @@ const Hook = () => {
         const { data: giftsData, error: giftsError } = await supabase
           .from("GiftsData")
           .select("*");
-        console.log(giftsData);
 
         const { data: promoData, error: promoError } = await supabase
           .from("Promo")
@@ -30,7 +29,6 @@ const Hook = () => {
         const { data: imagesData, error: imagesError } = await supabase
           .from("ImagesData")
           .select("id, img2, img3, img4");
-        console.log(imagesData);
 
         const { data: languageData, error: languageError } = await supabase
           .from("Language")

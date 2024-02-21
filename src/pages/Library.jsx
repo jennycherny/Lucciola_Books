@@ -40,8 +40,8 @@ const Library = ({ condition }) => {
       } = useBookFilters(data, condition);
     
     return (
-        <div className="library__container">
-        <div className='wrapper' >
+        <div className="shop__container">
+        <div className='shop__wrapper' >
             <useBookFilters
                 selectedGenres={selectedGenres}
                 isFilterOpen={isFilterOpen}

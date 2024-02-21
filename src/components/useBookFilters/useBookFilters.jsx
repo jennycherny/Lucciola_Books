@@ -119,7 +119,6 @@ const filtersAndSortings = useCallback((genres, min, max, minAge, maxAge, search
 
   useEffect(() => {
     if (data !== undefined && minPrice !== undefined && maxPrice !== undefined) {
-      console.log('Calling filtersAndSortings from Cart');
         filtersAndSortings(selectedGenres, minPrice, maxPrice, minAge, maxAge, searchPlace);
     }
   }, 

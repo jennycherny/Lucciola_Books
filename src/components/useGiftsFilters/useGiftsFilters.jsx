@@ -20,6 +20,9 @@ const useGiftsFilters = (data, condition) => {
 
     useEffect(() => {
         if (data) {
+          console.log('Data in useGiftsFilters:', data);
+          console.log('Condition in useGiftsFilters:', condition);
+          
           const filteredData = data.filter((book) => book.stock > 0);
           setOriginalItems(filteredData);
           setItems(filteredData);
