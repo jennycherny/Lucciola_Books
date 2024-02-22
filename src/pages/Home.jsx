@@ -1,6 +1,7 @@
 import React from 'react';
 import PromoCarousel from '../components/PromoCarousel/PromoCarousel';
 import Footer from '../components/Footer/Footer';
+import Hook from '../components/Hooks/Hook';
 import './css/Home.css'
 import shopFrame from './../assets/frame_1.svg'
 import libraryFrame from './../assets/frame_2.svg'
@@ -26,8 +27,7 @@ const Home = () => {
                     <img src={shopFrame} alt=''/>
                 </div>
                 <div className='promo-carousel'>
-                    <h2 id='shop-promo'>Новинки месяца</h2>
-                    <PromoCarousel condition="Новая"/>
+                    <PromoCarouselWrapper condition="Новая" title="Новинки месяца"/>
                 </div>  
                 <div className='library__block'>
                     <img src={libraryFrame} alt=''/>
@@ -43,8 +43,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='promo-carousel'>
-                    <h2 id='shop-promo'><span>Нестареющая классика</span></h2>
-                    <PromoCarousel condition="Б/У"/>
+                    <PromoCarouselWrapper condition="Б/У" title="Нестареющая классика"/>
                 </div> 
                 <div className='order__block'>
                     <div className='order__block__text'>
@@ -70,6 +69,22 @@ const Home = () => {
         <Footer/>
         </div>
         );
-}
+};
+
+const PromoCarouselWrapper = ({ condition, title }) => {
+    const { data } = Hook();
+    const promoBooks = data.filter((book) => book.promo === true && book.condition === condition);
+
+    if (promoBooks.length === 0) {
+        return null;
+    }
+
+    return (
+        <>
+            <h2 id='shop-promo'>{title}</h2>
+            <PromoCarousel condition={condition} />
+        </>
+    );
+};
 
 export default Home;

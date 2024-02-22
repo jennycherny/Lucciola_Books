@@ -8,6 +8,7 @@ const PromoCarousel = ({ condition }) => {
     const { data, isLoading  } = Hook();
     
     const promoBooks = data.filter((book) => book.promo === true && book.condition === condition);
+    const showCarousel = promoBooks.length > 0;
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [startPosition, setStartPosition] = useState(0);
@@ -38,6 +39,10 @@ const PromoCarousel = ({ condition }) => {
     }, [isPaused, promoBooks, isSwiping, currentIndex]);
     
     if (isLoading) {
+        return null;
+    }
+
+    if (!showCarousel) {
         return null;
     }
 
