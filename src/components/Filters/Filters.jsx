@@ -142,27 +142,30 @@ const Filters = ({
                                 />
                             </div>
                         </div>
-                            <div className='range'>
-                                <div className='range__name'>Возраст</div>
-                                <div className='range__input'>
-                                    <div className='fromTo'>от</div>
-                                    <input 
-                                        type="text" 
-                                        placeholder='0 лет' 
-                                        className='input'
-                                        value={minAge}   // Устанавливаем значение minAge
-                                        onChange={handleMinAgeChange}
-                                    />
-                                    <div className='fromTo'>до</div>
-                                    <input 
-                                        type="text" 
-                                        placeholder='0 лет' 
-                                        className='input'
-                                        value={maxAge}   // Устанавливаем значение maxAge
-                                        onChange={handleMaxAgeChange}
-                                    />
+                            {selectedGenres && selectedGenres.includes('Детская литература') && (
+                                <div className='range'>
+                                    <div className='range__name'>Возраст</div>
+                                    <div className='range__input'>
+                                        <div className='fromTo'>от</div>
+                                        <input 
+                                            type="text" 
+                                            placeholder='0 лет' 
+                                            className='input'
+                                            value={minAge}  
+                                            onChange={handleMinAgeChange}
+                                        />
+                                        <div className='fromTo'>до</div>
+                                        <input 
+                                            type="text" 
+                                            placeholder='0 лет' 
+                                            className='input'
+                                            value={maxAge}   
+                                            onChange={handleMaxAgeChange}
+                                        />
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+                            
                         <div className='popup__buttons'>
                             <button 
                                 onClick={handleResetFilters}
