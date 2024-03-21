@@ -15,7 +15,7 @@ app.post('/api/sendPreorderEmail', async (req, res) => {
       service: 'gmail',
       auth: {
         user: 'evchern.it@gmail.com',
-        pass: 'wggk fghc vclf eubw',
+        pass: 'wggk fghc vclf eubw'
       },
     });
 

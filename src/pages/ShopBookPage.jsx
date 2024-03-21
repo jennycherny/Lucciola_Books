@@ -149,17 +149,29 @@ const ShopBookPage = () => {
                         detailsOpen ? "open" : ""
                       }`}
                     >
-                      <h7 className="category">
-                        Категория: {foundBook.category}
-                      </h7>
-                      <h7 className="publishing">
-                        Издательство: {foundBook.publishing}
-                      </h7>
-                      <h7 className="age">Возраст: {foundBook.age}+</h7>
-                      <h7 className="cover">Обложка: {foundBook.cover}</h7>
-                      <h7 className="condition">
+
+                      {foundBook.category && (
+                        <h7 className="category">
+                          Категория: {foundBook.category}
+                        </h7>
+                      )}
+                      {foundBook.publishing && (
+                        <h7 className="publishing">
+                          Издательство: {foundBook.publishing}
+                        </h7>
+                      )}
+                      {foundBook.age && (
+                        <h7 className="age">Возраст: {foundBook.age}+</h7>
+                      )}
+                      {foundBook.cover && (
+                        <h7 className="cover">Обложка: {foundBook.cover}</h7>
+                      )}
+                      {foundBook.condition && (
+                        <h7 className="condition">
                         Состояние: {foundBook.condition}
                       </h7>
+                      )}
+
                     </div>
                   )}
                 </div>

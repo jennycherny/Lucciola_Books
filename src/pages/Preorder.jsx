@@ -13,7 +13,7 @@ const Preorder = () => {
         email: '',
         telegram: '',
         comment: '',
-      };
+    };
 
     const [formData, setFormData] = useState(initialFormData);
     
@@ -35,7 +35,6 @@ const Preorder = () => {
         console.log('Form data:', formData);
 
         try {
-          // Отправка данных на серверную функцию на Vercel
             const response = await fetch('https://lucciola-books.vercel.app/api/sendPreorderEmail', {
             method: 'POST',
             headers: {
@@ -48,10 +47,8 @@ const Preorder = () => {
             throw new Error('Failed to send data');
           }
       
-          // Обработка ответа
           const result = await response.json();
           console.log('Response from server:', result);  
-          // Открываем модальное окно
 
           setModalOpen(true);
           setFormData(initialFormData);
