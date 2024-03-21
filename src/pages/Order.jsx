@@ -9,6 +9,8 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { BsBox2 } from "react-icons/bs";
 import { MdOutlinePayment } from "react-icons/md";
 
+import noPhoto from './../assets/no-photo.png';
+
 const Order = () => {
     const navigate = useNavigate();
     const { buyCart, rentCart, setBuyCart, setRentCart } = useCart();
@@ -155,6 +157,10 @@ const Order = () => {
         }
     };
 
+    const getImagePath = (book) => {
+        return book.img ? book.img : noPhoto;
+    };
+
     return (
         <div className="order-container">
             <div className="order-form-item choose">
@@ -279,7 +285,7 @@ const Order = () => {
                     {[...buyCart, ...rentCart].map((book) => (
                         <li key={book.id} className='order-book-item'>
                         <Link to={book.condition === 'Новая' ? `/shop/${book.id}` : `/library/${book.id}`}>
-                            <img src={book.img} alt="Обложка книги" />
+                            <img src={getImagePath(book)} alt="Обложка книги" />
                             <p className='title'>{book.title}</p>
                             <p className='author'>{book.author}</p>
                             <p className='price'>{book.inBuyCart ? book.price : book.rentPrice} GEL</p>

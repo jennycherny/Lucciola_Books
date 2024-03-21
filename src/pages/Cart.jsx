@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../components/Providers/CartProvider';
 import EmptyCartPlaceholder from '../components/EmptyCartPlaceholder/EmptyCartPlaceholder';
 import './css/Cart.css'
+import noPhoto from './../assets/no-photo.png';
 import { IoBagCheckOutline } from "react-icons/io5";
 
 const Cart = () => {
@@ -20,6 +21,11 @@ const Cart = () => {
         navigate('/order');
       };
 
+    const getImagePath = (book) => {
+        return book.img ? book.img : noPhoto;
+    };
+
+
     return (
         <div>
             <div className="cart">
@@ -33,7 +39,7 @@ const Cart = () => {
                     {buyCart.map((book) => (
                         <li key={book.id} className="cart-book">
                             <div className="cart-book-title">
-                                <img src={book.img} alt="Обложка книги" />
+                                <img src={getImagePath(book)} alt="Обложка книги" />
                                 <div>
                                     <h4 className="cart-book-title">{book.title}</h4>
                                     <h5 className="cart-book-author">{book.author}</h5>
@@ -59,7 +65,7 @@ const Cart = () => {
                     {rentCart.map((book) => (
                         <li key={book.id} className="cart-book">
                             <div className="cart-book-title">
-                                <img src={book.img} alt="обложка книги" />
+                                <img src={getImagePath(book)} alt="обложка книги" />
                                 <div>
                                     <h4 className="cart-book-title">{book.title}</h4>
                                     <h5 className="cart-book-author">{book.author}</h5>

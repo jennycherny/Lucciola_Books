@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useCart } from '../Providers/CartProvider';
-import './SingleLibraryBookItem.css'
+import './SingleLibraryBookItem.css';
+import noPhoto from './../../assets/no-photo.png';
 
 const SingleLibraryBookItem = ({ book }) => {    
     const { rentCart, buyCart, addToRentCart, addToBuyCart, removeFromRentCart, removeFromBuyCart } = useCart();
@@ -34,10 +35,12 @@ const SingleLibraryBookItem = ({ book }) => {
         isBookInBuyCart ? removeFromBuyCart(book) : addToBuyCart(book);
     };
 
+    const noImage = book.img ? book.img : noPhoto;
+
     return (
         <div className='item' key={book.id}>
         <Link to={`/library/${book.id}`} className='cards-link'>
-          <img src={book.img} alt='Обложка книги' className='book-item-img'/>
+          <img src={noImage} alt='Обложка книги' className='book-item-img'/>
           <div className='cardText'>
             <h4 className='title'>{book.title}</h4>
             <h5 className='author'>{book.author}</h5>

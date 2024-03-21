@@ -6,6 +6,7 @@ import { useCart } from "../components/Providers/CartProvider";
 import "./css/ShopBookPage.css";
 import { MdOutlineExpandMore, MdOutlineExpandLess } from "react-icons/md";
 import Footer from "../components/Footer/Footer";
+import noPhoto from './../assets/no-photo.png';
 
 const ShopBookPage = () => {
   const { data, isLoading } = Hook();
@@ -62,6 +63,8 @@ const ShopBookPage = () => {
     setCurrentImage(img);
   };
 
+  const noImage = foundBook && foundBook.img ? foundBook.img : noPhoto;
+
   return (
     <div>
       <div className="bookpage">
@@ -77,9 +80,7 @@ const ShopBookPage = () => {
 
           {foundBook && (
             <div className="bookpage-img">
-              {foundBook.img && (
-                <img src={currentImage || foundBook.img} alt="Фото книги" />
-              )}
+                <img src={currentImage || noImage } alt="Фото книги" />
               {foundBook.images && (
                 <div className="thumbnails-container">
                   <div
