@@ -119,6 +119,12 @@ color: #2F2E41;
     border-radius: 10px;
     color: #212529;
     font-size: 15px;
+
+    resize: none; 
+
+    @media(max-width: 750px) {
+        max-width: 250px;
+    }
 }
 
 .order-form-item textarea:focus {
