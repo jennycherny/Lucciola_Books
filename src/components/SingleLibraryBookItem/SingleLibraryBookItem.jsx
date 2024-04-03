@@ -44,7 +44,7 @@ const SingleLibraryBookItem = ({ book }) => {
           <div className='cardText'>
             <h4 className='title'>{book.title}</h4>
             <h5 className='author'>{book.author}</h5>
-            <h3 className='price'>{book.rentPrice} GEL/ {book.price} GEL</h3>
+            <h3 className='price'>{book.rentPrice} GEL{book.price && `/ ${book.price} GEL`}</h3>
           </div>
           {languageStickerText && <div className='sticker'>{languageStickerText}</div>}
         </Link>
@@ -59,6 +59,7 @@ const SingleLibraryBookItem = ({ book }) => {
                     </span>
                 </button>
             </div>
+            {book.price && (
             <div className="">
                 <button className={buyCartButtonClass} onClick={handleAddToBuyCart}>
                     <svg width='18px' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -69,7 +70,7 @@ const SingleLibraryBookItem = ({ book }) => {
                     </span>
                 </button>
             </div>
-            
+            )}
         </div>
       </div>
       )

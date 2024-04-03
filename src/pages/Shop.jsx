@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import Hook from '../components/Hooks/Hook';
 import ShopSectionButtons from '../components/ShopSectionButtons/ShopSectionButtons';
@@ -21,22 +22,17 @@ const Shop = ({ selectedSection, setSelectedSection }) => {
     console.log(selectedSection);
 
     return (
-        <div className="shop__container">
-            <div className='shop__wrapper' >
-
-                <ShopSectionButtons 
-                    selectedSection={selectedSection} 
-                    toggleSection={toggleSection} 
-                />
-
-                {selectedSection === 'books' && (
+        <>
+            {selectedSection === 'books' && (
                     <ShopBooks 
                         data={data} 
                         isLoading={isLoading}
+                        selectedSection={selectedSection}
+                        toggleSection={toggleSection}
                     /> 
                 )}
                 
-                {selectedSection === 'gifts' && (
+            {selectedSection === 'gifts' && (
                     <ShopGifts 
                         data={data} 
                         isLoading={isLoading}
@@ -44,10 +40,7 @@ const Shop = ({ selectedSection, setSelectedSection }) => {
                         toggleSection={toggleSection}
                     />
                 )}
-                
-            </div>
-        <Footer/>
-        </div>
+        </>
                 
     );
 };

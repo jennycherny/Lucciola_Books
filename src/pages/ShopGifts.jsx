@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+
 import Hook from '../components/Hooks/Hook';
 import ShopSectionButtons from '../components/ShopSectionButtons/ShopSectionButtons';
 import GiftsFilters from '../components/GiftsFilters/GiftsFilters';
