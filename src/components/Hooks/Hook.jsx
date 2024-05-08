@@ -22,36 +22,35 @@ const Hook = () => {
           .from("GiftsData")
           .select("*");
 
-        const { data: imagesData, error: imagesError } = await supabase
-          .from("ImagesData")
-          .select("id, img2, img3, img4");
-
-        if (
-          booksError ||
-          giftsError ||
-          imagesError 
-        ) {
+        if (booksError || giftsError) {
           setError(
             booksError ||
-              giftsError ||
-              imagesError 
+              giftsError
           );
         } else {
           const processedBooksData = booksData.map((book) => {
-            const images = imagesData.find((image) => image.id === book.id);
+            const images = {
+              img2: book.img2,
+              img3: book.img3,
+              img4: book.img4,
+            };
 
             return {
               ...book,
-              images: images ? images : null,
+              images: images.img2 || images.img3 || images.img4 ? images : null,
             };
           });
 
           const processedGiftsData = giftsData.map((gift) => {
-            const images = imagesData.find((image) => image.id === gift.id);
+            const images = {
+              img2: gift.img2,
+              img3: gift.img3,
+              img4: gift.img4,
+            };
 
             return {
               ...gift,
-              images: images ? images : null,
+              images: images.img2 || images.img3 || images.img4 ? images : null,
             };
           });
 
