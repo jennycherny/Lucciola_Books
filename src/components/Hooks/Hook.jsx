@@ -34,25 +34,19 @@ const Hook = () => {
           .from("Language")
           .select("id, language");
 
-        const { data: rentedData, error: rentedError } = await supabase
-          .from("Rented")
-          .select("id, rented");
-
         if (
           booksError ||
           giftsError ||
           promoError ||
           imagesError ||
-          languageError ||
-          rentedError
+          languageError
         ) {
           setError(
             booksError ||
               giftsError ||
               promoError ||
               imagesError ||
-              languageError ||
-              rentedError
+              languageError
           );
         } else {
           const processedBooksData = booksData.map((book) => {
@@ -61,14 +55,12 @@ const Hook = () => {
             const language = languageData.find(
               (language) => language.id === book.id
             );
-            const rented = rentedData.find((rented) => rented.id === book.id);
 
             return {
               ...book,
               promo: promo ? promo.promo : null,
               images: images ? images : null,
               language: language ? language.language : null,
-              rented: rented ? rented.rented : null,
             };
           });
 
