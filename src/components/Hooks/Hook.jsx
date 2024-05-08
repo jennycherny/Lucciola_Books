@@ -22,45 +22,27 @@ const Hook = () => {
           .from("GiftsData")
           .select("*");
 
-        const { data: promoData, error: promoError } = await supabase
-          .from("Promo")
-          .select("id, promo");
-
         const { data: imagesData, error: imagesError } = await supabase
           .from("ImagesData")
           .select("id, img2, img3, img4");
 
-        const { data: languageData, error: languageError } = await supabase
-          .from("Language")
-          .select("id, language");
-
         if (
           booksError ||
           giftsError ||
-          promoError ||
-          imagesError ||
-          languageError
+          imagesError 
         ) {
           setError(
             booksError ||
               giftsError ||
-              promoError ||
-              imagesError ||
-              languageError
+              imagesError 
           );
         } else {
           const processedBooksData = booksData.map((book) => {
-            const promo = promoData.find((promo) => promo.id === book.id);
             const images = imagesData.find((image) => image.id === book.id);
-            const language = languageData.find(
-              (language) => language.id === book.id
-            );
 
             return {
               ...book,
-              promo: promo ? promo.promo : null,
               images: images ? images : null,
-              language: language ? language.language : null,
             };
           });
 
