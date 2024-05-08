@@ -33,15 +33,19 @@
 
 .warning-block {
     width: 60%;
-    /* max-width: 650px; */
     display: flex;
     margin: 5px 25px;
 
     padding: 10px;
-    /* border: 1px solid #2F2E41; */
 
     color: #2F2E41;
-    /* background: #36354d; */
+
+    @media(max-width: 750px) {
+        width: 80%;
+        margin: 0px auto;
+        max-width: 250px;
+        
+    }
 }
 
 .warning-block-icon {

@@ -28,8 +28,8 @@ app.post('/api/sendPreorderEmail', async (req, res) => {
 
       Название книги: ${formData.bookTitle}
       Автор: ${formData.author}
-      Электронная почта: ${formData.email}
-      Telegram: ${formData.telegram}
+      Номер телефона: ${formData.phone}
+      Instagram: ${formData.instagram}
       Комментарий: ${formData.comment || 'Отсутствует'}
       `,
     };

@@ -14,7 +14,7 @@ app.post('/api/sendOrderEmail', async (req, res) => {
     console.log('Received form data:', formData);
     console.log('Request body:', req.body);
 
-    const { buyCart, rentCart, deliveryMethod, totalAmount, city, address, email, telegram, comment} = formData;
+    const { buyCart, rentCart, deliveryMethod, totalAmount, city, address, phone, instagram, comment} = formData;
 
     console.log('buyCart:', buyCart);
     console.log('rentCart:', rentCart);
@@ -22,8 +22,8 @@ app.post('/api/sendOrderEmail', async (req, res) => {
     console.log('totalAmount:', totalAmount);
     console.log('city:', city);
     console.log('address:', address);
-    console.log('email:', email);
-    console.log('telegram:', telegram);
+    console.log('phone:', phone);
+    console.log('instagram:', instagram);
     console.log('comment:', comment);
 
     const transporter = nodemailer.createTransport({
@@ -70,8 +70,8 @@ app.post('/api/sendOrderEmail', async (req, res) => {
 
         Город: ${city || 'Самовывоз'}
         Адрес: ${address || 'Самовывоз'}
-        Email: ${email}
-        Telegram/Номер телефона: ${telegram}
+        Номер телефона: ${phone}
+        Instagram: ${instagram}
 
         Комментарий: ${comment || 'Отсутствует'}
       `,
