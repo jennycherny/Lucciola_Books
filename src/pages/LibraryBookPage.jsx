@@ -156,7 +156,7 @@ const LibraryBookPage = () => {
                             <p className="out-of-stock-message">Нет в наличии</p>
                         )}
                         {foundBook.rented && (
-                            <p className="rented-message">Книга сейчас арендована</p>
+                            <p className="rented-message">Книга сейчас арендована, <br />но скоро появится в наличии</p>
                         )}
                         {foundBook.stock !== 0 && !foundBook.rented && (
                             <div className="bookpage-desc-buttons">

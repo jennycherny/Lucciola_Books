@@ -21,7 +21,7 @@ main .books-list {
     grid-column-gap: 15px;
     grid-row-gap: 15px;
   } 
-  @media(max-width: 750px) {
+  @media(max-width: 800px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 4fr;

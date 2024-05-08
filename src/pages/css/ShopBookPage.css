@@ -173,12 +173,20 @@
     margin-bottom: 20px;
     padding: 5px 15px;
 
-    border: 2px solid #726BC0;
+    border: 2px solid #e9cf5a;
     border-radius: 7px;
 
-    color: #726BC0;
+    color: #e9cf5a;
     font-size: 18px;
     font-weight: bold;
+    text-align: center;
+    text-wrap: nowrap;
+
+    @media(max-width: 750px) {
+        text-wrap: wrap;
+        font-size: 16px;
+    }
+    
 }
 
 .bookpage-data-more {

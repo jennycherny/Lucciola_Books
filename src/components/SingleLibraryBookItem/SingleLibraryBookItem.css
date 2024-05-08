@@ -25,3 +25,35 @@
         flex-direction: column;
     }
 }
+
+.rented-book {
+    display: flex;
+    align-items: center;
+
+    margin: 8px 6px 5px 0px;
+    padding: 6px 7px;
+
+    background-color: #dfdee3;
+    border: 1px solid #dfdee3;
+    border-radius: 5px; 
+    padding: 3px 6px;
+    color: #6c6980; 
+    
+    font-size: 15px;
+
+    @media(max-width: 750px) {
+        margin: 3px 0px;
+        padding: 3px 6px;
+        font-size: 13px;
+        text-wrap: nowrap;
+    }
+}
+
+.rented-book svg {
+    margin: 3px;
+
+    @media(max-width: 750px) {
+        margin: 2px;
+        margin-left: 0px;
+    }
+}
